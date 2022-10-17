@@ -20,7 +20,7 @@ public class ExpPoint : MonoBehaviour
 		}
 		if(isInRange)
 		{
-			transform.position = transform.forward * Time.deltaTime * player.playerSpeed;
+			transform.position = Vector3.MoveTowards(transform.position, player.transform.position, player.playerSpeed * Time.deltaTime * 2f);
 		}
     }
 	

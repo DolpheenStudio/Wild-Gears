@@ -20,7 +20,8 @@ public class Enemy : MonoBehaviour
 	
 	public void DestroyEnemy()
 	{
-		for(int i = 0; i < Random.Range(3, 6); i++)
+		int expPointsAmount = Random.Range(3, 6);
+		for(int i = 0; i < expPointsAmount; i++)
 		{
 			Instantiate(expPointPrefab, new Vector3(transform.position.x + (float) Random.Range(-1f, 1f), transform.position.y + Random.Range(-1f, 1f), 0f), Quaternion.Euler(0f, 0f, 0f));
 			Destroy(gameObject);

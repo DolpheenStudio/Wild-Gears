@@ -37,7 +37,6 @@ public class PlayerBullet : MonoBehaviour
                 closestEnemy = enemy;
             }
         }
-		Debug.Log(closestEnemy);
         return closestEnemy;
     }
 	
