@@ -13,7 +13,14 @@ public class PlayerBullet : MonoBehaviour
 
     void Update()
     {
-        Vector3.MoveTowards(transform.position, closestEnemy.transform.position, 1f * Time.deltaTime);
+		if(closestEnemy == null) 
+		{
+			transform.position += transform.forward * Time.deltaTime * 2f;
+		}
+		else
+		{
+			transform.position = Vector3.MoveTowards(transform.position, closestEnemy.transform.position, 2f * Time.deltaTime);
+		}
     }
 
     GameObject FindClosestEnemy()
@@ -30,6 +37,16 @@ public class PlayerBullet : MonoBehaviour
                 closestEnemy = enemy;
             }
         }
+		Debug.Log(closestEnemy);
         return closestEnemy;
     }
+	
+	void OnTriggerEnter(Collider coll)
+	{
+		if(coll.tag == "Enemy")
+		{
+			Destroy(gameObject);
+			coll.gameObject.GetComponent<Enemy>().DestroyEnemy();
+		}
+	}
 }

@@ -33,8 +33,6 @@ public class GenerateFloorTile : MonoBehaviour
     {
         currentPlayerX = Mathf.RoundToInt(player.position.x / tileSize);
         currentPlayerY = Mathf.RoundToInt(player.position.y / tileSize);
-
-        Debug.Log(currentPlayerX + " / " + currentPlayerY);
     }
 
     void UpdateVisibleTiles()

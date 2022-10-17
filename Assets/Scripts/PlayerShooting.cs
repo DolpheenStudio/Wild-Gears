@@ -6,11 +6,11 @@ public class PlayerShooting : MonoBehaviour
 {
     public GameObject playerBulletPrefab;
     private Player player;
-    // Update is called once per frame
+    
     void Start()
     {
         player = FindObjectOfType<Player>();
-        InvokeRepeating("Shoot", 1f, player.playerAttackSpeed);
+        InvokeRepeating("Shoot", 2f, player.playerAttackSpeed);
     }
 
     void Shoot()
