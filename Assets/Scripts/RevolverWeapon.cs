@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShooting : MonoBehaviour
+public class RevolverWeapon : MonoBehaviour
 {
-    public GameObject playerBulletPrefab;
+    public GameObject revolverProjectilePrefab;
     private Player player;
-	private bool canShoot = true;
+	private bool canShoot;
 	private float playerShootCooldown;
     
     void Start()
@@ -21,14 +21,14 @@ public class PlayerShooting : MonoBehaviour
 		{
 			if(Vector3.Distance(player.transform.position, FindClosestEnemy().transform.position) <= player.playerRange)
 			{
-				Shoot();
 				canShoot = false;
+				StartCoroutine(Shoot());
 				playerShootCooldown = 0f;
 			}
 		}
-		else 
+		else
 		{
-			if(playerShootCooldown < player.playerAttackSpeed)
+			if(playerShootCooldown <= player.playerAttackSpeed)
 			{
 				playerShootCooldown += Time.deltaTime;
 			}
@@ -55,17 +55,13 @@ public class PlayerShooting : MonoBehaviour
         }
         return closestEnemy;
     }
-    void Shoot()
+    IEnumerator Shoot()
     {
-		for(int i = 0; i < player.playerProjectileAmount; i++)
+		for (int i = 0; i < player.playerProjectileAmount; i++)
 		{
-			Instantiate(playerBulletPrefab, transform.position, transform.rotation);
-			StartCoroutine(Waiter(1));
+			Instantiate(revolverProjectilePrefab, transform.position, transform.rotation);
+			Debug.Log("Shoot");
+			yield return new WaitForSeconds(.5f);
 		}
-    }
-	
-	IEnumerator Waiter(float time)
-	{
-		yield return new WaitForSeconds(time);
 	}
 }

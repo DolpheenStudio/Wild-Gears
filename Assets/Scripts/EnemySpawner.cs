@@ -4,19 +4,34 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public int enemySpawnCooldown = 1;
     public Transform spawner;
 
     public GameObject enemyPrefab;
 
+    private float enemySpawnCooldown = 2f;
+    private int enemiesSpawned = 1;
+
     void Start()
     {
-        InvokeRepeating("SpawnEnemy", 0f, enemySpawnCooldown);
+        StartCoroutine(SpawnEnemy());
     }
 
-    void SpawnEnemy()
+    private void FixedUpdate()
     {
-        transform.rotation = Quaternion.Euler(0f, 0f, (float)Random.Range(0, 360));
-        Instantiate(enemyPrefab, spawner.transform.position, Quaternion.Euler(0f, 0f, 0f));
+        if(enemiesSpawned % 30 == 0)
+        {
+            if (enemySpawnCooldown >= 0.1f) enemySpawnCooldown -= 0.1f;
+        }
+    }
+
+    IEnumerator SpawnEnemy()
+    {
+        while(1 > 0)
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, (float)Random.Range(0, 360));
+            GameObject enemy = Instantiate(enemyPrefab, spawner.transform.position, Quaternion.Euler(0f, 0f, 0f));
+
+            yield return new WaitForSeconds(enemySpawnCooldown);
+        }
     }
 }

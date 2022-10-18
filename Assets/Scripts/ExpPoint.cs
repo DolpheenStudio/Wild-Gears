@@ -14,7 +14,8 @@ public class ExpPoint : MonoBehaviour
 
     void Update()
     {
-        if(Vector3.Distance(transform.position, player.transform.position) <= player.playerPickupRange) 
+		float distance = Vector3.Distance(transform.position, player.transform.position);
+        if(distance <= player.playerPickupRange) 
 		{
 			isInRange = true;
 		}
@@ -22,13 +23,15 @@ public class ExpPoint : MonoBehaviour
 		{
 			transform.position = Vector3.MoveTowards(transform.position, player.transform.position, player.playerSpeed * Time.deltaTime * 2f);
 		}
+		if(distance <= .5f)
+        {
+			CollectExp();
+        }
     }
-	
-	void OnTriggerEnter(Collider coll)
-	{
-		if(coll.name == "Player")
-		{
-			Destroy(gameObject);
-		}
-	}
+
+	void CollectExp()
+    {
+		player.playerExp++;
+		Destroy(gameObject);
+    }
 }

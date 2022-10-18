@@ -1,18 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerExpBar : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Slider expBar;
+    private Player player;
+    private bool isFillActive;
+    public GameObject expBarFill;
+    private int playerLevel;
+    
     void Start()
     {
-        
+        expBar = GetComponent<Slider>();
+        player = FindObjectOfType<Player>();
+        expBar.maxValue = player.playerMaxExp;
+        playerLevel = player.playerLevel;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if(player.playerExp > 0)
+        {
+            if (!isFillActive) expBarFill.SetActive(true);
+            expBar.value = player.playerExp;
+        }
+        else
+        {
+            isFillActive = false;
+            expBarFill.SetActive(false);
+        }
+        if(playerLevel != player.playerLevel)
+        {
+            expBar.maxValue = player.playerMaxExp;
+        }
     }
 }

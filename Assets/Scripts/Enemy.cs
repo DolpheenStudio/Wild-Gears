@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private Player player;
-    private float enemySpeed = 1f;
+    private float enemySpeed = 2f;
 	public GameObject expPointPrefab;
 	
     void Start()
@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
 		for(int i = 0; i < expPointsAmount; i++)
 		{
 			Instantiate(expPointPrefab, new Vector3(transform.position.x + (float) Random.Range(-1f, 1f), transform.position.y + Random.Range(-1f, 1f), 0f), Quaternion.Euler(0f, 0f, 0f));
-			Destroy(gameObject);
-		}	
+		}
+		Destroy(gameObject);
 	}
 }
