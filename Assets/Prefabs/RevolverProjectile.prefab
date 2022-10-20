@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01ba314798e589a4e9ddbd4cbd33f956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  revolverWeapon: {fileID: 1248026284593142856, guid: 887feef865aa5d74c840c56868121a3c, type: 3}
 --- !u!50 &1283541200775943637
 Rigidbody2D:
   serializedVersion: 4

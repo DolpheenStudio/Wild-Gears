@@ -5,8 +5,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private Player player;
-    private float enemySpeed = 2f;
+    public float enemySpeed;
 	public GameObject expPointPrefab;
+	public float enemyHealth;
+	public float enemyDamage;
 	
     void Start()
     {
@@ -16,6 +18,21 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, enemySpeed * Time.deltaTime);
+		
+		if(enemyHealth <= 0f)
+        {
+			DestroyEnemy();
+        }
+		
+		if(Vector3.Distance(transform.position, player.transform.position) <= 1f)
+        {
+			if (player.isDamagable) player.DealDamage(enemyDamage);
+        }
+    }
+
+	public void DealDamageToEnemy(float damage)
+    {
+		enemyHealth -= damage;
     }
 	
 	public void DestroyEnemy()

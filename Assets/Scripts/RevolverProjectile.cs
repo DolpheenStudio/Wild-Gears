@@ -4,31 +4,35 @@ using UnityEngine;
 
 public class RevolverProjectile : MonoBehaviour
 {
-    private GameObject closestEnemy;
+    private GameObject targetEnemy;
+    public RevolverWeapon revolverWeapon;
     private bool isColliding;
+    private float weaponDamage;
     void Start()
     {
-        closestEnemy = FindClosestEnemy();
-        transform.LookAt(new Vector3(closestEnemy.transform.position.x, closestEnemy.transform.position.y, 0f));
+        FindClosestEnemy();
+        
         isColliding = false;
+        weaponDamage = revolverWeapon.revolverDamage;
     }
 
     void Update()
     {
-		if(closestEnemy == null) 
+        transform.LookAt(new Vector3(targetEnemy.transform.position.x, targetEnemy.transform.position.y, 0f));
+        if (targetEnemy == null) 
 		{
 			transform.position += transform.forward * Time.deltaTime * 4f;
 		}
 		else
 		{
-			transform.position = Vector3.MoveTowards(transform.position, closestEnemy.transform.position, 4f * Time.deltaTime);
+			transform.position = Vector3.MoveTowards(transform.position, targetEnemy.transform.position, 4f * Time.deltaTime);
 		}
     }
 
-    GameObject FindClosestEnemy()
+    void FindClosestEnemy()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        GameObject closestEnemy = null;
+        GameObject tempEnemy = null;
 
         float distance = Mathf.Infinity;
         foreach (GameObject enemy in enemies)
@@ -36,10 +40,25 @@ public class RevolverProjectile : MonoBehaviour
             if (Vector3.Distance(transform.position, enemy.transform.position) < distance)
             {
                 distance = Vector3.Distance(transform.position, enemy.transform.position);
-                closestEnemy = enemy;
+                tempEnemy = enemy;
             }
         }
-        return closestEnemy;
+        targetEnemy = tempEnemy;
+    }
+
+    void FindRandomEnemy()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        List<GameObject> enemiesInRange = new List<GameObject>();
+
+        foreach (GameObject enemy in enemies)
+        {
+            if (Vector3.Distance(transform.position, enemy.transform.position) <= 100f)
+            {
+                enemiesInRange.Add(enemy);
+            }
+        }
+        targetEnemy = enemiesInRange[Random.Range(0, enemiesInRange.Count)];
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -51,12 +70,18 @@ public class RevolverProjectile : MonoBehaviour
         if (collision.gameObject.tag != "Player")
         {
             isColliding = true;
-            Debug.Log("Trigger with" + collision.name);
-            Destroy(gameObject);
             if (collision.gameObject.tag == "Enemy")
             {
-                collision.gameObject.GetComponent<Enemy>().DestroyEnemy();
+                collision.gameObject.GetComponent<Enemy>().DealDamageToEnemy(weaponDamage);
+                if (revolverWeapon.isRicochet)
+                {
+                    FindRandomEnemy();
+
+                    isColliding = false;
+                }
+                //else Destroy(gameObject);
             }
+            //else Destroy(gameObject);
         }
     }
 }

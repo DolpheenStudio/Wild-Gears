@@ -11,10 +11,16 @@ public class RevolverWeapon : MonoBehaviour
 	private bool canShoot;
 	private float playerShootCooldown;
 	private PlayerUIController playerUIController;
+	
+	public bool isRicochet = false;
+	public float revolverAttackSpeed = 1f;
+	public float revolverRange = 5f;
+	public float revolverDamage = 1f;
+	public float revolverAdditionalProjectileAmount = 0f;
 
 	void SetRevolverWeapon()
     {
-		GameObject weaponGameObject = Instantiate(revolverSkillTree, playerUIController.FreeWeaponSlot().transform);
+		//GameObject weaponGameObject = Instantiate(revolverSkillTree, playerUIController.FreeWeaponSlot().transform);
 		player.playerWeaponAmount++;
 	}
     
@@ -23,7 +29,7 @@ public class RevolverWeapon : MonoBehaviour
         player = FindObjectOfType<Player>();
 		playerUIController = FindObjectOfType<PlayerUIController>();
 
-		playerShootCooldown = player.playerAttackSpeed;
+		playerShootCooldown = revolverAttackSpeed;
 		SetRevolverWeapon();
     }
 	
@@ -31,7 +37,7 @@ public class RevolverWeapon : MonoBehaviour
 	{
 		if(canShoot)
 		{
-			if(Vector3.Distance(player.transform.position, FindClosestEnemy().transform.position) <= player.playerRange)
+			if(Vector3.Distance(player.transform.position, FindClosestEnemy().transform.position) <= revolverRange)
 			{
 				canShoot = false;
 				StartCoroutine(Shoot());
@@ -40,7 +46,7 @@ public class RevolverWeapon : MonoBehaviour
 		}
 		else
 		{
-			if(playerShootCooldown <= player.playerAttackSpeed)
+			if(playerShootCooldown <= revolverAttackSpeed)
 			{
 				playerShootCooldown += Time.deltaTime;
 			}
@@ -69,11 +75,10 @@ public class RevolverWeapon : MonoBehaviour
     }
     IEnumerator Shoot()
     {
-		for (int i = 0; i < player.playerProjectileAmount; i++)
+		for (int i = 0; i < player.playerProjectileAmount + revolverAdditionalProjectileAmount; i++)
 		{
 			Instantiate(revolverProjectilePrefab, transform.position, transform.rotation);
-			Debug.Log("Shoot");
-			yield return new WaitForSeconds(.5f);
+			yield return new WaitForSeconds(.3f);
 		}
 	}
 }

@@ -1,24 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public float playerSpeed = 3f;
-    public float playerAttackSpeed = 2f;
-	public float playerPickupRange = 2f;
-	public float playerRange = 5f;
-	public int playerProjectileAmount = 1;
-	public int playerLevel = 1;
+    public float playerSpeed;
+	public float playerPickupRange;
+	public int playerProjectileAmount;
+	public int playerLevel;
     public int playerExp = 0;
-    public int playerMaxExp = 100;
+    public int playerMaxExp;
     public int playerUpgradePoints = 0;
     public int playerWeaponAmount = 0;
+    public float playerHealth;
+    public float playerMaxHealth;
+
+    public bool isDamagable = true;
+
+    private float playerDamageCooldown = 0.2f;
 
     public GameObject revolverWeaponPrefab;
 
-    void Start()
+    void Awake()
     {
+        playerMaxHealth = playerHealth;
         SetPlayerWeapon(revolverWeaponPrefab);
     }
 
@@ -27,7 +33,20 @@ public class Player : MonoBehaviour
         if(playerExp >= playerMaxExp)
         {
             LevelUp();
-            playerUpgradePoints++;
+        }
+
+        if(playerDamageCooldown >= 0f)
+        {
+            playerDamageCooldown -= Time.deltaTime;
+        }
+        else
+        {
+            isDamagable = true;
+        }
+
+        if(playerHealth <= 0f)
+        {
+            PlayerDeath();
         }
     }
 
@@ -35,7 +54,8 @@ public class Player : MonoBehaviour
     {
         playerExp = 0;
         playerLevel++;
-        playerMaxExp += 50;
+        playerUpgradePoints++;
+        playerMaxExp += playerMaxExp;
 
         Time.timeScale = 0;
     }
@@ -47,5 +67,20 @@ public class Player : MonoBehaviour
             GameObject weaponGameObject = Instantiate(playerWeapon, transform.position, transform.rotation);
             weaponGameObject.transform.SetParent(transform, true);
         }
+    }
+
+    public void DealDamage(float damage)
+    {
+        if(isDamagable)
+        {
+            playerHealth -= damage;
+            playerDamageCooldown = 0.2f;
+            isDamagable = false;
+        }
+    }
+
+    void PlayerDeath()
+    {
+        SceneManager.LoadScene(1);
     }
 }
