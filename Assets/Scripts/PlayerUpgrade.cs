@@ -21,7 +21,6 @@ public class PlayerUpgrade : MonoBehaviour
             player.playerMaxHealth += 10;
             playerHealthUpgrade++;
             player.playerUpgradePoints -= playerHealthUpgrade;
-            Time.timeScale = 1;
         }
     }
 
@@ -32,7 +31,6 @@ public class PlayerUpgrade : MonoBehaviour
             player.playerSpeed += 0.2f;
             playerSpeedUpgrade++;
             player.playerUpgradePoints -= playerSpeedUpgrade;
-            Time.timeScale = 1;
         }
     }
 
@@ -43,7 +41,6 @@ public class PlayerUpgrade : MonoBehaviour
             player.playerPickupRange += 0.2f;
             playerPickupRadiusUpgrade++;
             player.playerUpgradePoints -= playerPickupRadiusUpgrade;
-            Time.timeScale = 1;
         }
     }
 

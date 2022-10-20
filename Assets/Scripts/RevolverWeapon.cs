@@ -8,15 +8,15 @@ public class RevolverWeapon : MonoBehaviour
 	public GameObject revolverSkillTree;
 
 	private Player player;
-	private bool canShoot;
-	private float playerShootCooldown;
-	private PlayerUIController playerUIController;
+	private bool isEnemyInRange;
+	private bool isShooting;
 	
 	public bool isRicochet = false;
+	public bool isFastReload = false;
 	public float revolverAttackSpeed = 1f;
 	public float revolverRange = 5f;
 	public float revolverDamage = 1f;
-	public float revolverAdditionalProjectileAmount = 0f;
+	public int revolverAdditionalProjectileAmount = 0;
 
 	void SetRevolverWeapon()
     {
@@ -27,37 +27,20 @@ public class RevolverWeapon : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
-		playerUIController = FindObjectOfType<PlayerUIController>();
 
-		playerShootCooldown = revolverAttackSpeed;
 		SetRevolverWeapon();
     }
 	
 	void Update()
 	{
-		if(canShoot)
+		isEnemyInRange = Vector3.Distance(player.transform.position, FindClosestEnemy().transform.position) <= revolverRange;
+		if (isEnemyInRange && !isShooting)
 		{
-			if(Vector3.Distance(player.transform.position, FindClosestEnemy().transform.position) <= revolverRange)
-			{
-				canShoot = false;
-				StartCoroutine(Shoot());
-				playerShootCooldown = 0f;
-			}
-		}
-		else
-		{
-			if(playerShootCooldown <= revolverAttackSpeed)
-			{
-				playerShootCooldown += Time.deltaTime;
-			}
-			else 
-			{
-				canShoot = true;
-			}
+			StartCoroutine(Shoot());
 		}
 	}
-	
-	GameObject FindClosestEnemy()
+
+    GameObject FindClosestEnemy()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject closestEnemy = null;
@@ -75,10 +58,26 @@ public class RevolverWeapon : MonoBehaviour
     }
     IEnumerator Shoot()
     {
-		for (int i = 0; i < player.playerProjectileAmount + revolverAdditionalProjectileAmount; i++)
-		{
-			Instantiate(revolverProjectilePrefab, transform.position, transform.rotation);
-			yield return new WaitForSeconds(.3f);
+		isShooting = true;
+		if(!isFastReload)
+        {
+			for (int i = 0; i < player.playerProjectileAmount + revolverAdditionalProjectileAmount; i++)
+			{
+				if (!isEnemyInRange) break;
+				Instantiate(revolverProjectilePrefab, transform.position, transform.rotation);
+				yield return new WaitForSeconds(.3f);
+			}
+			yield return new WaitForSeconds(revolverAttackSpeed - .3f);
 		}
+		else
+        {
+			while(isEnemyInRange)
+            {
+				if (!isEnemyInRange) break;
+				Instantiate(revolverProjectilePrefab, transform.position, transform.rotation);
+				yield return new WaitForSeconds(.3f);
+			}
+        }
+		isShooting = false;
 	}
 }

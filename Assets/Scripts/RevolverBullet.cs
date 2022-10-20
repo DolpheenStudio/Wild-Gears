@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RevolverProjectile : MonoBehaviour
+public class RevolverBullet : MonoBehaviour
 {
     private GameObject targetEnemy;
     public RevolverWeapon revolverWeapon;
-    public float ricochetRange = 10f;
+    public float ricochetRange;
     private bool isColliding;
     private bool canRicochet;
     private float weaponDamage;
@@ -17,11 +17,14 @@ public class RevolverProjectile : MonoBehaviour
 
     void Start()
     {
+        revolverWeapon = FindObjectOfType<RevolverWeapon>();
+
         FindClosestEnemy();
         
         isColliding = false;
         weaponDamage = revolverWeapon.revolverDamage;
 
+        ricochetRange = revolverWeapon.revolverRange;
         if (revolverWeapon.isRicochet) canRicochet = true;
     }
 
@@ -86,6 +89,7 @@ public class RevolverProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Trigger");
         if (isColliding)
         {
             return;
@@ -96,7 +100,9 @@ public class RevolverProjectile : MonoBehaviour
             collision.gameObject.GetComponent<Enemy>().DealDamageToEnemy(weaponDamage);
             if (canRicochet)
             {
+                Debug.Log("Can ricochet");
                 FindClosestEnemy(collision.gameObject);
+                if (Vector3.Distance(transform.position, targetEnemy.transform.position) > ricochetRange) Destroy(gameObject);
                 isColliding = false;
                 canRicochet = false;
             }

@@ -52,9 +52,9 @@ public class RevolverSkillTree : MonoBehaviour
 
     public void Add1PRO()
     {
-        if (player.playerUpgradePoints >= 2 && upgradeTier >= 1)
+        if (player.playerUpgradePoints >= 1 && upgradeTier >= 1 && player.playerLevel >= 4)
         {
-            player.playerUpgradePoints -= 2;
+            player.playerUpgradePoints -= 1;
             revolverWeapon.revolverAdditionalProjectileAmount++;
             revolverSkillTreeButtons[2].interactable = false;
             ColorBlock cb = revolverSkillTreeButtons[2].colors;
@@ -67,9 +67,9 @@ public class RevolverSkillTree : MonoBehaviour
 
     public void Add15AS()
     {
-        if (player.playerUpgradePoints >= 3 && upgradeTier >= 2)
+        if (player.playerUpgradePoints >= 1 && upgradeTier >= 2 && player.playerLevel >= 6)
         {
-            player.playerUpgradePoints -= 3;
+            player.playerUpgradePoints -= 1;
             revolverWeapon.revolverAttackSpeed *= 0.85f;
             revolverSkillTreeButtons[4].interactable = false;
             revolverSkillTreeButtons[3].interactable = false;
@@ -83,10 +83,10 @@ public class RevolverSkillTree : MonoBehaviour
 
     public void Add15DMG()
     {
-        if (player.playerUpgradePoints >= 3 && upgradeTier >= 2)
+        if (player.playerUpgradePoints >= 1 && upgradeTier >= 2 && player.playerLevel >= 6)
         {
-            player.playerUpgradePoints -= 3;
-            revolverWeapon.revolverDamage *= 0.85f;
+            player.playerUpgradePoints -= 1;
+            revolverWeapon.revolverDamage *= 1.15f;
             revolverSkillTreeButtons[3].interactable = false;
             revolverSkillTreeButtons[4].interactable = false;
             ColorBlock cb = revolverSkillTreeButtons[4].colors;
@@ -99,9 +99,9 @@ public class RevolverSkillTree : MonoBehaviour
 
     public void Add1PRO2()
     {
-        if (player.playerUpgradePoints >= 4 && upgradeTier >= 3)
+        if (player.playerUpgradePoints >= 1 && upgradeTier >= 3 && player.playerLevel >= 8)
         {
-            player.playerUpgradePoints -= 3;
+            player.playerUpgradePoints -= 1;
             revolverWeapon.revolverAdditionalProjectileAmount++;
             revolverSkillTreeButtons[5].interactable = false;
             ColorBlock cb = revolverSkillTreeButtons[5].colors;
@@ -114,9 +114,9 @@ public class RevolverSkillTree : MonoBehaviour
 
     public void Add20AS()
     {
-        if (player.playerUpgradePoints >= 5 && upgradeTier >= 4)
+        if (player.playerUpgradePoints >= 1 && upgradeTier >= 4 && player.playerLevel >= 10)
         {
-            player.playerUpgradePoints -= 5;
+            player.playerUpgradePoints -= 1;
             revolverWeapon.revolverAttackSpeed *= 0.80f;
             revolverSkillTreeButtons[7].interactable = false;
             revolverSkillTreeButtons[6].interactable = false;
@@ -130,10 +130,10 @@ public class RevolverSkillTree : MonoBehaviour
 
     public void Add20DMG()
     {
-        if (player.playerUpgradePoints >= 5 && upgradeTier >= 4)
+        if (player.playerUpgradePoints >= 1 && upgradeTier >= 4 && player.playerLevel >= 10)
         {
-            player.playerUpgradePoints -= 5;
-            revolverWeapon.revolverDamage *= 0.80f;
+            player.playerUpgradePoints -= 1;
+            revolverWeapon.revolverDamage *= 1.2f;
             revolverSkillTreeButtons[6].interactable = false;
             revolverSkillTreeButtons[7].interactable = false;
             ColorBlock cb = revolverSkillTreeButtons[7].colors;
@@ -146,13 +146,13 @@ public class RevolverSkillTree : MonoBehaviour
 
     public void AddRicochet()
     {
-        if (player.playerUpgradePoints >= 6 && upgradeTier >= 5)
+        if (player.playerUpgradePoints >= 1 && upgradeTier >= 5 && player.playerLevel >= 13)
         {
-            player.playerUpgradePoints -= 6;
+            player.playerUpgradePoints -= 1;
             revolverWeapon.isRicochet = true;
-            revolverSkillTreeButtons[9].interactable = false;
             revolverSkillTreeButtons[8].interactable = false;
-            ColorBlock cb = revolverSkillTreeButtons[8].colors;
+            revolverSkillTreeButtons[9].interactable = false;
+            ColorBlock cb = revolverSkillTreeButtons[9].colors;
             cb.disabledColor = Color.yellow;
             revolverSkillTreeButtons[9].colors = cb;
 
@@ -162,15 +162,15 @@ public class RevolverSkillTree : MonoBehaviour
 
     public void AddFastReload()
     {
-        if (player.playerUpgradePoints >= 6 && upgradeTier >= 5)
+        if (player.playerUpgradePoints >= 1 && upgradeTier >= 5 && player.playerLevel >= 13)
         {
-            player.playerUpgradePoints -= 6;
-            revolverWeapon.revolverAttackSpeed = 1.5f;
-            revolverSkillTreeButtons[8].interactable = false;
+            player.playerUpgradePoints -= 1;
+            revolverWeapon.isFastReload = true;
             revolverSkillTreeButtons[9].interactable = false;
-            ColorBlock cb = revolverSkillTreeButtons[9].colors;
+            revolverSkillTreeButtons[8].interactable = false;
+            ColorBlock cb = revolverSkillTreeButtons[8].colors;
             cb.disabledColor = Color.yellow;
-            revolverSkillTreeButtons[9].colors = cb;
+            revolverSkillTreeButtons[8].colors = cb;
 
             upgradeTier++;
         }

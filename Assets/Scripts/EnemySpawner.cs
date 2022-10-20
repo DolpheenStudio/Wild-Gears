@@ -8,13 +8,15 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject enemyContainer;
 
-    private float enemySpawnCooldown = 2f;
-    private int enemySpawnAmount = 1;
-    private int enemiesSpawned;
+    public float enemySpawnCooldown = 1.5f;
+    private float tempEnemySpawnCooldown;
+    public int enemySpawnAmount = 1;
+    public int enemiesSpawned;
 
     void Start()
     {
         StartCoroutine(SpawnEnemy());
+        tempEnemySpawnCooldown = enemySpawnCooldown;
     }
 
     private void Update()
@@ -24,29 +26,28 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
-        while(1 > 0)
+        while(true)
         {
             transform.rotation = Quaternion.Euler(0f, 0f, (float)Random.Range(0, 360));
+            enemiesSpawned++;
             for (int i = 0; i < enemySpawnAmount; i++)
             {
                 Vector3 spawnPosition = new Vector3(spawner.transform.position.x + Random.Range(-2f, 2f), spawner.transform.position.y + Random.Range(-2f, 2f), 0f);
                 GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.Euler(0f, 0f, 0f));
-                enemiesSpawned++;
                 enemy.transform.name = "Enemy " + enemiesSpawned;
                 enemy.transform.parent = enemyContainer.transform;
-                Debug.Log(enemySpawnCooldown + " " + enemySpawnAmount + " " + enemiesSpawned);
-                if (enemiesSpawned % 10 == 0) IncreaseSpawn();
+                if (enemiesSpawned % 20 == 0) IncreaseSpawn();
             }
-            yield return new WaitForSeconds(enemySpawnCooldown);
+            yield return new WaitForSeconds(tempEnemySpawnCooldown);
         }
     }
 
     void IncreaseSpawn()
     {
-        if (enemySpawnCooldown >= 0.3f) enemySpawnCooldown -= 0.1f;
+        if (tempEnemySpawnCooldown >= 0.3f) tempEnemySpawnCooldown -= 0.1f;
         else
         {
-            enemySpawnCooldown = 2f;
+            tempEnemySpawnCooldown = enemySpawnCooldown;
             enemySpawnAmount++;
         }
     }

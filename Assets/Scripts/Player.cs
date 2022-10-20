@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
         playerExp -= playerMaxExp;
         playerLevel++;
         playerUpgradePoints++;
-        playerMaxExp += playerMaxExp;
+        playerMaxExp += 5;
 
         Time.timeScale = 0;
     }

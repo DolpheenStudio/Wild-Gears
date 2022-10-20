@@ -9,6 +9,8 @@ public class PlayerUIController : MonoBehaviour
     public GameObject upgradeScreen;
     public GameObject playerExpBar;
     public GameObject playerHealthBar;
+    public GameObject timer;
+    public GameObject pauseButton;
     public GameObject[] weaponSlots = new GameObject[3];
 
     private Player player;
@@ -24,6 +26,8 @@ public class PlayerUIController : MonoBehaviour
             movementJoystick.SetActive(false);
             playerExpBar.SetActive(false);
             playerHealthBar.SetActive(false);
+            timer.SetActive(false);
+            pauseButton.SetActive(false);
 
             pauseBG.SetActive(true);
             upgradeScreen.SetActive(true);
@@ -33,6 +37,8 @@ public class PlayerUIController : MonoBehaviour
             movementJoystick.SetActive(true);
             playerExpBar.SetActive(true);
             playerHealthBar.SetActive(true);
+            timer.SetActive(true);
+            pauseButton.SetActive(true);
 
             pauseBG.SetActive(false);
             upgradeScreen.SetActive(false);
