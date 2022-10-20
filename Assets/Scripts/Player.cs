@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
 
     private void LevelUp()
     {
-        playerExp = 0;
+        playerExp -= playerMaxExp;
         playerLevel++;
         playerUpgradePoints++;
         playerMaxExp += playerMaxExp;

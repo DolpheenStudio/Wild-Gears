@@ -10,6 +10,7 @@ public class RevolverProjectile : MonoBehaviour
     private bool isColliding;
     private bool canRicochet;
     private float weaponDamage;
+    private float revolverBulletSpeed = 8f;
 
     public GameObject[] enemiesArray;
     public List<GameObject> enemiesList = new List<GameObject>();
@@ -28,11 +29,11 @@ public class RevolverProjectile : MonoBehaviour
     {
         if (targetEnemy == null) 
 		{
-			transform.position += transform.forward * Time.deltaTime * 4f;
+			transform.position += transform.forward * Time.deltaTime * revolverBulletSpeed;
 		}
 		else
 		{
-			transform.position = Vector3.MoveTowards(transform.position, targetEnemy.transform.position, 4f * Time.deltaTime);
+			transform.position = Vector3.MoveTowards(transform.position, targetEnemy.transform.position, revolverBulletSpeed * Time.deltaTime);
             transform.LookAt(new Vector3(targetEnemy.transform.position.x, targetEnemy.transform.position.y, 0f));
         }
     }

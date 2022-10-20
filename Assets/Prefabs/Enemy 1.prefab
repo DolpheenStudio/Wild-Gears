@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 2
   expPointPrefab: {fileID: 9029414067892307489, guid: 6f390b13db8abd248b82b368f433fcd6, type: 3}
-  enemyHealth: 2
+  enemyHealth: 30
   enemyDamage: 2
 --- !u!60 &-4710929636912190206
 PolygonCollider2D:

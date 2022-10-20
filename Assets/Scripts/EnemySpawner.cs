@@ -10,25 +10,16 @@ public class EnemySpawner : MonoBehaviour
 
     private float enemySpawnCooldown = 2f;
     private int enemySpawnAmount = 1;
-    private int enemiesSpawned = 1;
+    private int enemiesSpawned;
 
     void Start()
     {
         StartCoroutine(SpawnEnemy());
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if(enemiesSpawned % 10 == 0)
-        {
-            if (enemySpawnCooldown >= 0.1f) enemySpawnCooldown -= 0.1f;
-            else 
-            {
-                enemySpawnAmount++;
-                enemySpawnCooldown = 2f;
-            }
-            
-        }
+
     }
 
     IEnumerator SpawnEnemy()
@@ -40,12 +31,23 @@ public class EnemySpawner : MonoBehaviour
             {
                 Vector3 spawnPosition = new Vector3(spawner.transform.position.x + Random.Range(-2f, 2f), spawner.transform.position.y + Random.Range(-2f, 2f), 0f);
                 GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.Euler(0f, 0f, 0f));
+                enemiesSpawned++;
                 enemy.transform.name = "Enemy " + enemiesSpawned;
                 enemy.transform.parent = enemyContainer.transform;
-                enemiesSpawned++;
+                Debug.Log(enemySpawnCooldown + " " + enemySpawnAmount + " " + enemiesSpawned);
+                if (enemiesSpawned % 10 == 0) IncreaseSpawn();
             }
             yield return new WaitForSeconds(enemySpawnCooldown);
-            Debug.Log(enemySpawnCooldown + " " + enemySpawnAmount);
+        }
+    }
+
+    void IncreaseSpawn()
+    {
+        if (enemySpawnCooldown >= 0.3f) enemySpawnCooldown -= 0.1f;
+        else
+        {
+            enemySpawnCooldown = 2f;
+            enemySpawnAmount++;
         }
     }
 }
