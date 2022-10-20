@@ -40,9 +40,12 @@ public class EnemySpawner : MonoBehaviour
             {
                 Vector3 spawnPosition = new Vector3(spawner.transform.position.x + Random.Range(-2f, 2f), spawner.transform.position.y + Random.Range(-2f, 2f), 0f);
                 GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.Euler(0f, 0f, 0f));
+                enemy.transform.name = "Enemy " + enemiesSpawned;
                 enemy.transform.parent = enemyContainer.transform;
+                enemiesSpawned++;
             }
             yield return new WaitForSeconds(enemySpawnCooldown);
+            Debug.Log(enemySpawnCooldown + " " + enemySpawnAmount);
         }
     }
 }

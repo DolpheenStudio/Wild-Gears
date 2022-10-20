@@ -6,19 +6,26 @@ public class RevolverProjectile : MonoBehaviour
 {
     private GameObject targetEnemy;
     public RevolverWeapon revolverWeapon;
+    public float ricochetRange = 10f;
     private bool isColliding;
+    private bool canRicochet;
     private float weaponDamage;
+
+    public GameObject[] enemiesArray;
+    public List<GameObject> enemiesList = new List<GameObject>();
+
     void Start()
     {
         FindClosestEnemy();
         
         isColliding = false;
         weaponDamage = revolverWeapon.revolverDamage;
+
+        if (revolverWeapon.isRicochet) canRicochet = true;
     }
 
     void Update()
     {
-        transform.LookAt(new Vector3(targetEnemy.transform.position.x, targetEnemy.transform.position.y, 0f));
         if (targetEnemy == null) 
 		{
 			transform.position += transform.forward * Time.deltaTime * 4f;
@@ -26,16 +33,22 @@ public class RevolverProjectile : MonoBehaviour
 		else
 		{
 			transform.position = Vector3.MoveTowards(transform.position, targetEnemy.transform.position, 4f * Time.deltaTime);
-		}
+            transform.LookAt(new Vector3(targetEnemy.transform.position.x, targetEnemy.transform.position.y, 0f));
+        }
     }
 
     void FindClosestEnemy()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        enemiesArray = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject enemy in enemiesArray)
+        {
+            enemiesList.Add(enemy);
+        }
+
         GameObject tempEnemy = null;
 
         float distance = Mathf.Infinity;
-        foreach (GameObject enemy in enemies)
+        foreach (GameObject enemy in enemiesList)
         {
             if (Vector3.Distance(transform.position, enemy.transform.position) < distance)
             {
@@ -46,19 +59,28 @@ public class RevolverProjectile : MonoBehaviour
         targetEnemy = tempEnemy;
     }
 
-    void FindRandomEnemy()
+    void FindClosestEnemy(GameObject lastEnemy)
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        List<GameObject> enemiesInRange = new List<GameObject>();
-
-        foreach (GameObject enemy in enemies)
+        enemiesArray = GameObject.FindGameObjectsWithTag("Enemy");
+        enemiesList.Clear();
+        foreach (GameObject enemy in enemiesArray)
         {
-            if (Vector3.Distance(transform.position, enemy.transform.position) <= 100f)
+            enemiesList.Add(enemy);
+        }
+
+        enemiesList.Remove(lastEnemy);
+        GameObject tempEnemy = null;
+
+        float distance = Mathf.Infinity;
+        foreach (GameObject enemy in enemiesList)
+        {
+            if (Vector3.Distance(transform.position, enemy.transform.position) < distance)
             {
-                enemiesInRange.Add(enemy);
+                distance = Vector3.Distance(transform.position, enemy.transform.position);
+                tempEnemy = enemy;
             }
         }
-        targetEnemy = enemiesInRange[Random.Range(0, enemiesInRange.Count)];
+        targetEnemy = tempEnemy;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -70,18 +92,14 @@ public class RevolverProjectile : MonoBehaviour
         if (collision.gameObject.tag != "Player")
         {
             isColliding = true;
-            if (collision.gameObject.tag == "Enemy")
+            collision.gameObject.GetComponent<Enemy>().DealDamageToEnemy(weaponDamage);
+            if (canRicochet)
             {
-                collision.gameObject.GetComponent<Enemy>().DealDamageToEnemy(weaponDamage);
-                if (revolverWeapon.isRicochet)
-                {
-                    FindRandomEnemy();
-
-                    isColliding = false;
-                }
-                //else Destroy(gameObject);
+                FindClosestEnemy(collision.gameObject);
+                isColliding = false;
+                canRicochet = false;
             }
-            //else Destroy(gameObject);
+            else Destroy(gameObject);
         }
     }
 }
