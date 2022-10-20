@@ -5,14 +5,26 @@ using UnityEngine;
 public class RevolverWeapon : MonoBehaviour
 {
     public GameObject revolverProjectilePrefab;
-    private Player player;
+	public GameObject revolverSkillTree;
+
+	private Player player;
 	private bool canShoot;
 	private float playerShootCooldown;
+	private PlayerUIController playerUIController;
+
+	void SetRevolverWeapon()
+    {
+		GameObject weaponGameObject = Instantiate(revolverSkillTree, playerUIController.FreeWeaponSlot().transform);
+		player.playerWeaponAmount++;
+	}
     
     void Start()
     {
         player = FindObjectOfType<Player>();
+		playerUIController = FindObjectOfType<PlayerUIController>();
+
 		playerShootCooldown = player.playerAttackSpeed;
+		SetRevolverWeapon();
     }
 	
 	void Update()

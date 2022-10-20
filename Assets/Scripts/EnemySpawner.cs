@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public Transform spawner;
-
     public GameObject enemyPrefab;
+    public GameObject enemyContainer;
 
     private float enemySpawnCooldown = 2f;
     private int enemiesSpawned = 1;
@@ -30,6 +30,7 @@ public class EnemySpawner : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0f, 0f, (float)Random.Range(0, 360));
             GameObject enemy = Instantiate(enemyPrefab, spawner.transform.position, Quaternion.Euler(0f, 0f, 0f));
+            enemy.transform.parent = enemyContainer.transform;
 
             yield return new WaitForSeconds(enemySpawnCooldown);
         }

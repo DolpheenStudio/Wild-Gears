@@ -6,9 +6,14 @@ public class PlayerUIController : MonoBehaviour
 {
     public GameObject movementJoystick;
     public GameObject pauseBG;
+    public GameObject upgradeScreen;
+    public GameObject playerExpBar;
+    public GameObject[] weaponSlots = new GameObject[3];
+
+    private Player player;
     void Start()
     {
-        
+        player = FindObjectOfType<Player>();
     }
 
     void Update()
@@ -16,13 +21,27 @@ public class PlayerUIController : MonoBehaviour
         if(Time.timeScale == 0)
         {
             movementJoystick.SetActive(false);
-            pauseBG.SetActive(true);
+            playerExpBar.SetActive(false);
 
+            pauseBG.SetActive(true);
+            upgradeScreen.SetActive(true);
         }
         else
         {
             movementJoystick.SetActive(true);
+            playerExpBar.SetActive(true);
+
             pauseBG.SetActive(false);
+            upgradeScreen.SetActive(false);
         }
+    }
+
+    public GameObject FreeWeaponSlot()
+    {
+        if (player.playerWeaponAmount < 3)
+        {
+            return weaponSlots[player.playerWeaponAmount];
+        }
+        else return null;
     }
 }

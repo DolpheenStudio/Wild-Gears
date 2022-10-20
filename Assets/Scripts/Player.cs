@@ -12,12 +12,14 @@ public class Player : MonoBehaviour
 	public int playerLevel = 1;
     public int playerExp = 0;
     public int playerMaxExp = 100;
+    public int playerUpgradePoints = 0;
+    public int playerWeaponAmount = 0;
 
     public GameObject revolverWeaponPrefab;
 
     void Start()
     {
-        SetPlayerWeapon();
+        SetPlayerWeapon(revolverWeaponPrefab);
     }
 
     void Update()
@@ -25,6 +27,7 @@ public class Player : MonoBehaviour
         if(playerExp >= playerMaxExp)
         {
             LevelUp();
+            playerUpgradePoints++;
         }
     }
 
@@ -37,9 +40,12 @@ public class Player : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    public void SetPlayerWeapon()
+    public void SetPlayerWeapon(GameObject playerWeapon)
     {
-        GameObject revolverWeapon = Instantiate(revolverWeaponPrefab, transform.position, transform.rotation);
-        revolverWeapon.transform.SetParent(transform, true);
+        if(playerWeaponAmount < 3)
+        {
+            GameObject weaponGameObject = Instantiate(playerWeapon, transform.position, transform.rotation);
+            weaponGameObject.transform.SetParent(transform, true);
+        }
     }
 }
