@@ -21,11 +21,12 @@ public class Player : MonoBehaviour
     private float playerDamageCooldown = 0.2f;
 
     public GameObject revolverWeaponPrefab;
+    public GameObject hammerWeaponPrefab;
 
     void Awake()
     {
         playerMaxHealth = playerHealth;
-        SetPlayerWeapon(revolverWeaponPrefab);
+        SetPlayerWeapon(hammerWeaponPrefab);
     }
 
     void Update()
@@ -56,8 +57,6 @@ public class Player : MonoBehaviour
         playerLevel++;
         playerUpgradePoints++;
         playerMaxExp += 5;
-
-        Time.timeScale = 0;
     }
 
     public void SetPlayerWeapon(GameObject playerWeapon)

@@ -10,11 +10,13 @@ public class PlayerUIController : MonoBehaviour
     public GameObject playerExpBar;
     public GameObject playerHealthBar;
     public GameObject timer;
+    public GameObject playerStats;
     public GameObject pauseButton;
     public GameObject[] weaponSlots = new GameObject[3];
 
-    private Player player;
-    void Start()
+    public Player player;
+
+    void Awake()
     {
         player = FindObjectOfType<Player>();
     }
@@ -27,6 +29,7 @@ public class PlayerUIController : MonoBehaviour
             playerExpBar.SetActive(false);
             playerHealthBar.SetActive(false);
             timer.SetActive(false);
+            playerStats.SetActive(false);
             pauseButton.SetActive(false);
 
             pauseBG.SetActive(true);
@@ -38,6 +41,7 @@ public class PlayerUIController : MonoBehaviour
             playerExpBar.SetActive(true);
             playerHealthBar.SetActive(true);
             timer.SetActive(true);
+            playerStats.SetActive(true);
             pauseButton.SetActive(true);
 
             pauseBG.SetActive(false);
@@ -50,6 +54,7 @@ public class PlayerUIController : MonoBehaviour
         if (player.playerWeaponAmount < 3)
         {
             return weaponSlots[player.playerWeaponAmount];
+            
         }
         else return null;
     }

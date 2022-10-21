@@ -6,6 +6,7 @@ public class RevolverWeapon : MonoBehaviour
 {
     public GameObject revolverProjectilePrefab;
 	public GameObject revolverSkillTree;
+	public PlayerUIController playerUIController;
 
 	private Player player;
 	private bool isEnemyInRange;
@@ -20,13 +21,14 @@ public class RevolverWeapon : MonoBehaviour
 
 	void SetRevolverWeapon()
     {
-		//GameObject weaponGameObject = Instantiate(revolverSkillTree, playerUIController.FreeWeaponSlot().transform);
+		GameObject weaponGameObject = Instantiate(revolverSkillTree, playerUIController.FreeWeaponSlot().transform);
 		player.playerWeaponAmount++;
 	}
     
     void Start()
     {
         player = FindObjectOfType<Player>();
+		playerUIController = FindObjectOfType<PlayerUIController>();
 
 		SetRevolverWeapon();
     }

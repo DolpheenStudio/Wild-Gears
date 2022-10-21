@@ -9,7 +9,6 @@ public class RevolverBullet : MonoBehaviour
     public float ricochetRange;
     private bool isColliding;
     private bool canRicochet;
-    private float weaponDamage;
     private float revolverBulletSpeed = 8f;
 
     public GameObject[] enemiesArray;
@@ -22,7 +21,6 @@ public class RevolverBullet : MonoBehaviour
         FindClosestEnemy();
         
         isColliding = false;
-        weaponDamage = revolverWeapon.revolverDamage;
 
         ricochetRange = revolverWeapon.revolverRange;
         if (revolverWeapon.isRicochet) canRicochet = true;
@@ -89,7 +87,6 @@ public class RevolverBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Trigger");
         if (isColliding)
         {
             return;
@@ -97,7 +94,7 @@ public class RevolverBullet : MonoBehaviour
         if (collision.gameObject.tag != "Player")
         {
             isColliding = true;
-            collision.gameObject.GetComponent<Enemy>().DealDamageToEnemy(weaponDamage);
+            if(targetEnemy != null && collision.gameObject.tag == "Enemy") collision.gameObject.GetComponent<Enemy>().DealDamageToEnemy(revolverWeapon.revolverDamage);
             if (canRicochet)
             {
                 Debug.Log("Can ricochet");

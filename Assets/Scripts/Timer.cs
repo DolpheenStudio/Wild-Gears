@@ -13,7 +13,7 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        if(Mathf.FloorToInt(Time.time % 60) <= 9)
+        if(Mathf.FloorToInt(Time.timeSinceLevelLoad % 60) <= 9)
         {
             text.SetText(Mathf.FloorToInt(Time.timeSinceLevelLoad / 60) + ":0" + Mathf.FloorToInt(Time.timeSinceLevelLoad % 60));
         }
