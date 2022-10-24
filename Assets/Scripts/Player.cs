@@ -22,11 +22,18 @@ public class Player : MonoBehaviour
 
     public GameObject revolverWeaponPrefab;
     public GameObject hammerWeaponPrefab;
+    public WeaponPick weaponPick;
 
     void Awake()
     {
         playerMaxHealth = playerHealth;
-        SetPlayerWeapon(hammerWeaponPrefab);
+        //SetPlayerWeapon(revolverWeaponPrefab);
+        
+    }
+
+    private void Start()
+    {
+        weaponPick.PickWeapon();
     }
 
     void Update()
@@ -57,6 +64,11 @@ public class Player : MonoBehaviour
         playerLevel++;
         playerUpgradePoints++;
         playerMaxExp += 5;
+
+        if (playerLevel == 10 || playerLevel == 20)
+        {
+            weaponPick.PickWeapon();
+        }
     }
 
     public void SetPlayerWeapon(GameObject playerWeapon)

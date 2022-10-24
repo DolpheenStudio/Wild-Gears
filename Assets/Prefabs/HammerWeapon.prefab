@@ -47,4 +47,10 @@ MonoBehaviour:
   hammerAttackSpeed: 2
   hammerSpeed: 180
   hammerAmount: 1
-  hammerComponent: {fileID: 4647331256095539380, guid: 584f441cc369b274ab0e6eb4696b7e21, type: 3}
+  hammerDamage: 1
+  isInfinite: 0
+  isLongerHammer: 0
+  hammerPrefab: {fileID: 4647331256095539380, guid: 584f441cc369b274ab0e6eb4696b7e21, type: 3}
+  longerHammerPrefab: {fileID: 4647331256095539380, guid: 63cddb910f3807942864386fa8c52d72, type: 3}
+  hammerSkillTree: {fileID: 2592266030665736242, guid: 8f2f24d26de56f8478509dd018f060cc, type: 3}
+  playerUIController: {fileID: 0}

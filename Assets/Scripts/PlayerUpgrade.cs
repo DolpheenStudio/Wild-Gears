@@ -5,12 +5,14 @@ using UnityEngine;
 public class PlayerUpgrade : MonoBehaviour
 {
     private Player player;
+    private PlayerUIController playerUIController;
     private int playerHealthUpgrade = 0;
     private int playerSpeedUpgrade = 0;
     private int playerPickupRadiusUpgrade = 0;
     void Start()
     {
         player = FindObjectOfType<Player>();
+        playerUIController = FindObjectOfType<PlayerUIController>();
     }
 
     public void AddPlayerHealth()
@@ -44,8 +46,9 @@ public class PlayerUpgrade : MonoBehaviour
         }
     }
 
-    public void SkipUpgrade()
+    public void ExitUpgrade()
     {
         Time.timeScale = 1;
+        playerUIController.DisableUpgradeScreen();
     }
 }

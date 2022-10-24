@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public DirectionPointerRotation directionPointer;
 
     private float joystickSensitivity = .2f;
+    private bool isDashing;
     void Start()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+
         Vector2 input = playerInput.actions["Movement"].ReadValue<Vector2>();
         if (Math.Abs(input.x) >= joystickSensitivity || Math.Abs(input.y) >= joystickSensitivity)
         {

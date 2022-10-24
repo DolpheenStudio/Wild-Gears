@@ -2,177 +2,136 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class RevolverSkillTree : MonoBehaviour
 {
-    public Button[] revolverSkillTreeButtons = new Button[10];
+    public Button addAttackSpeedButton;
+    public TMP_Text attackSpeedUpgradeCounter;
+    private int attackSpeedUpgrades;
+
+    public Button addDamageButton;
+    public TMP_Text damageUpgradeCounter;
+    private int damageUpgrades;
+
+    public Slider upgradeTierIndicator;
+
+    public Button addProjectileButton;
+    public bool isAddProjectileButton = false;
+
+    public Button addProjectileButton2;
+    public bool isAddProjectileButton2 = false;
+
+    public Button addRicochetButton;
+    public Button addFastReloadButton;
+
+
 
     private Player player;
     public RevolverWeapon revolverWeapon;
-
-    private int upgradeTier = 0;
 
     void Start()
     {
         player = FindObjectOfType<Player>();
         revolverWeapon = player.GetComponentInChildren<RevolverWeapon>();
+        addProjectileButton.interactable = false;
+        addProjectileButton2.interactable = false;
+        addRicochetButton.interactable = false;
+        addFastReloadButton.interactable = false;
+        isAddProjectileButton = false;
+        isAddProjectileButton2 = false;
+
+        upgradeTierIndicator.value = 0;
     }
 
-    public void Add10AS()
+    public void AddAttackSpeed()
     {
         if (player.playerUpgradePoints >= 1)
         {
-            player.playerUpgradePoints -= 1;
-            revolverWeapon.revolverAttackSpeed *= 0.9f;
-            revolverSkillTreeButtons[1].interactable = false;
-            revolverSkillTreeButtons[0].interactable = false;
-            ColorBlock cb = revolverSkillTreeButtons[0].colors;
-            cb.disabledColor = Color.yellow;
-            revolverSkillTreeButtons[0].colors = cb;
-
-            upgradeTier++;
+            revolverWeapon.revolverAttackSpeed -= 0.05f;
+            attackSpeedUpgrades++;
+            player.playerUpgradePoints--;
+            ReloadUpgradeTierIndicator();
         }
     }
 
-    public void Add10DMG()
+    public void AddDamage()
     {
         if (player.playerUpgradePoints >= 1)
         {
-            player.playerUpgradePoints -= 1;
-            revolverWeapon.revolverDamage *= 1.1f;
-            revolverSkillTreeButtons[0].interactable = false;
-            revolverSkillTreeButtons[1].interactable = false;
-            ColorBlock cb = revolverSkillTreeButtons[0].colors;
-            cb.disabledColor = Color.yellow;
-            revolverSkillTreeButtons[1].colors = cb;
-
-            upgradeTier++;
+            revolverWeapon.revolverDamage += 0.1f;
+            damageUpgrades++;
+            player.playerUpgradePoints--;
+            ReloadUpgradeTierIndicator();
         }
     }
 
-    public void Add1PRO()
+    void ReloadUpgradeTierIndicator()
     {
-        if (player.playerUpgradePoints >= 1 && upgradeTier >= 1 && player.playerLevel >= 4)
+        if (attackSpeedUpgrades + damageUpgrades < 20)
         {
-            player.playerUpgradePoints -= 1;
-            revolverWeapon.revolverAdditionalProjectileAmount++;
-            revolverSkillTreeButtons[2].interactable = false;
-            ColorBlock cb = revolverSkillTreeButtons[2].colors;
-            cb.disabledColor = Color.yellow;
-            revolverSkillTreeButtons[2].colors = cb;
-
-            upgradeTier++;
+            upgradeTierIndicator.value = attackSpeedUpgrades + damageUpgrades;
+            if (attackSpeedUpgrades + damageUpgrades >= 7 && !isAddProjectileButton) addProjectileButton.interactable = true;
+            if (attackSpeedUpgrades + damageUpgrades >= 14 && isAddProjectileButton && !isAddProjectileButton2) addProjectileButton2.interactable = true;
+            if (attackSpeedUpgrades > 0) attackSpeedUpgradeCounter.SetText(attackSpeedUpgrades.ToString());
+            if (damageUpgrades > 0) damageUpgradeCounter.SetText(damageUpgrades.ToString());
+        }
+        else
+        {
+            addAttackSpeedButton.interactable = false;
+            addDamageButton.interactable = false;
+            if (attackSpeedUpgrades + damageUpgrades >= 14 && isAddProjectileButton && !isAddProjectileButton2) addProjectileButton2.interactable = true;
+            if (attackSpeedUpgrades + damageUpgrades >= 20 && isAddProjectileButton2) addRicochetButton.interactable = true;
+            if (attackSpeedUpgrades + damageUpgrades >= 20 && isAddProjectileButton2) addFastReloadButton.interactable = true;
+            attackSpeedUpgradeCounter.SetText(attackSpeedUpgrades.ToString());
+            damageUpgradeCounter.SetText(damageUpgrades.ToString());
         }
     }
 
-    public void Add15AS()
+    public void AddProjectile() 
     {
-        if (player.playerUpgradePoints >= 1 && upgradeTier >= 2 && player.playerLevel >= 6)
+        revolverWeapon.revolverProjectileAmount++;
+
+        if(!isAddProjectileButton)
         {
-            player.playerUpgradePoints -= 1;
-            revolverWeapon.revolverAttackSpeed *= 0.85f;
-            revolverSkillTreeButtons[4].interactable = false;
-            revolverSkillTreeButtons[3].interactable = false;
-            ColorBlock cb = revolverSkillTreeButtons[3].colors;
-            cb.disabledColor = Color.yellow;
-            revolverSkillTreeButtons[3].colors = cb;
-
-            upgradeTier++;
+            addProjectileButton.interactable = false;
+            isAddProjectileButton = true;
+            var buttonColor = addProjectileButton.colors;
+            buttonColor.disabledColor = Color.yellow;
+            addProjectileButton.colors = buttonColor;
         }
-    }
-
-    public void Add15DMG()
-    {
-        if (player.playerUpgradePoints >= 1 && upgradeTier >= 2 && player.playerLevel >= 6)
+        else
         {
-            player.playerUpgradePoints -= 1;
-            revolverWeapon.revolverDamage *= 1.15f;
-            revolverSkillTreeButtons[3].interactable = false;
-            revolverSkillTreeButtons[4].interactable = false;
-            ColorBlock cb = revolverSkillTreeButtons[4].colors;
-            cb.disabledColor = Color.yellow;
-            revolverSkillTreeButtons[4].colors = cb;
-
-            upgradeTier++;
+            addProjectileButton2.interactable = false;
+            isAddProjectileButton2 = true;
+            var buttonColor = addProjectileButton2.colors;
+            buttonColor.disabledColor = Color.yellow;
+            addProjectileButton2.colors = buttonColor;
         }
-    }
-
-    public void Add1PRO2()
-    {
-        if (player.playerUpgradePoints >= 1 && upgradeTier >= 3 && player.playerLevel >= 8)
-        {
-            player.playerUpgradePoints -= 1;
-            revolverWeapon.revolverAdditionalProjectileAmount++;
-            revolverSkillTreeButtons[5].interactable = false;
-            ColorBlock cb = revolverSkillTreeButtons[5].colors;
-            cb.disabledColor = Color.yellow;
-            revolverSkillTreeButtons[5].colors = cb;
-
-            upgradeTier++;
-        }
-    }
-
-    public void Add20AS()
-    {
-        if (player.playerUpgradePoints >= 1 && upgradeTier >= 4 && player.playerLevel >= 10)
-        {
-            player.playerUpgradePoints -= 1;
-            revolverWeapon.revolverAttackSpeed *= 0.80f;
-            revolverSkillTreeButtons[7].interactable = false;
-            revolverSkillTreeButtons[6].interactable = false;
-            ColorBlock cb = revolverSkillTreeButtons[6].colors;
-            cb.disabledColor = Color.yellow;
-            revolverSkillTreeButtons[6].colors = cb;
-
-            upgradeTier++;
-        }
-    }
-
-    public void Add20DMG()
-    {
-        if (player.playerUpgradePoints >= 1 && upgradeTier >= 4 && player.playerLevel >= 10)
-        {
-            player.playerUpgradePoints -= 1;
-            revolverWeapon.revolverDamage *= 1.2f;
-            revolverSkillTreeButtons[6].interactable = false;
-            revolverSkillTreeButtons[7].interactable = false;
-            ColorBlock cb = revolverSkillTreeButtons[7].colors;
-            cb.disabledColor = Color.yellow;
-            revolverSkillTreeButtons[7].colors = cb;
-
-            upgradeTier++;
-        }
+        ReloadUpgradeTierIndicator();
     }
 
     public void AddRicochet()
     {
-        if (player.playerUpgradePoints >= 1 && upgradeTier >= 5 && player.playerLevel >= 13)
-        {
-            player.playerUpgradePoints -= 1;
-            revolverWeapon.isRicochet = true;
-            revolverSkillTreeButtons[8].interactable = false;
-            revolverSkillTreeButtons[9].interactable = false;
-            ColorBlock cb = revolverSkillTreeButtons[9].colors;
-            cb.disabledColor = Color.yellow;
-            revolverSkillTreeButtons[9].colors = cb;
+        revolverWeapon.isRicochet = true;
+        ReloadUpgradeTierIndicator();
+        addRicochetButton.interactable = false;
+        addFastReloadButton.interactable = false;
 
-            upgradeTier++;
-        }
+        var buttonColor = addRicochetButton.colors;
+        buttonColor.disabledColor = Color.yellow;
+        addRicochetButton.colors = buttonColor;
     }
 
     public void AddFastReload()
     {
-        if (player.playerUpgradePoints >= 1 && upgradeTier >= 5 && player.playerLevel >= 13)
-        {
-            player.playerUpgradePoints -= 1;
-            revolverWeapon.isFastReload = true;
-            revolverSkillTreeButtons[9].interactable = false;
-            revolverSkillTreeButtons[8].interactable = false;
-            ColorBlock cb = revolverSkillTreeButtons[8].colors;
-            cb.disabledColor = Color.yellow;
-            revolverSkillTreeButtons[8].colors = cb;
+        revolverWeapon.isFastReload = true;
+        ReloadUpgradeTierIndicator();
+        addRicochetButton.interactable = false;
+        addFastReloadButton.interactable = false;
 
-            upgradeTier++;
-        }
+        var buttonColor = addFastReloadButton.colors;
+        buttonColor.disabledColor = Color.yellow;
+        addFastReloadButton.colors = buttonColor;
     }
 }

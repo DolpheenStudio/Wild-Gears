@@ -17,7 +17,7 @@ public class RevolverWeapon : MonoBehaviour
 	public float revolverAttackSpeed = 1f;
 	public float revolverRange = 5f;
 	public float revolverDamage = 1f;
-	public int revolverAdditionalProjectileAmount = 0;
+	public int revolverProjectileAmount = 0;
 
 	void SetRevolverWeapon()
     {
@@ -63,7 +63,7 @@ public class RevolverWeapon : MonoBehaviour
 		isShooting = true;
 		if(!isFastReload)
         {
-			for (int i = 0; i < player.playerProjectileAmount + revolverAdditionalProjectileAmount; i++)
+			for (int i = 0; i < player.playerProjectileAmount + revolverProjectileAmount; i++)
 			{
 				if (!isEnemyInRange) break;
 				Instantiate(revolverProjectilePrefab, transform.position, transform.rotation);
