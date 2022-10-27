@@ -18,8 +18,7 @@ public class GenerateFloorTile : MonoBehaviour
     public Transform player;
     public GameObject[] tilePrefab;
     public Transform parent;
-    public GameObject cactusPrefab;
-    public GameObject cactus2Prefab;
+    public GameObject[] enviormentObjectsArray;
     void Start()
     {
         UpdateCurrentPlayerTile();
@@ -77,16 +76,10 @@ public class GenerateFloorTile : MonoBehaviour
             tempTile = Instantiate(tilePrefab[randomTile - 7], new Vector3(tileCoords.x * tileSize, tileCoords.y * tileSize, 0f), Quaternion.Euler(0f, 0f, randomTileRotation));
         }
         tempTile.transform.parent = parent;
-        int spawnCactus = Random.Range(0, 5);
-        if(spawnCactus == 0)
+        int spawnEnviorment = Random.Range(0, enviormentObjectsArray.Length * 2);
+        if(spawnEnviorment < enviormentObjectsArray.Length)
         {
-            GameObject cactusGameObject = Instantiate(cactusPrefab, Vector3.zero, transform.rotation);
-            cactusGameObject.transform.SetParent(tempTile.transform);
-            cactusGameObject.transform.localPosition = new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-2.5f, 2.5f), 0f);
-        }
-        else if (spawnCactus == 1)
-        {
-            GameObject cactusGameObject = Instantiate(cactus2Prefab, Vector3.zero, transform.rotation);
+            GameObject cactusGameObject = Instantiate(enviormentObjectsArray[spawnEnviorment], Vector3.zero, transform.rotation);
             cactusGameObject.transform.SetParent(tempTile.transform);
             cactusGameObject.transform.localPosition = new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-2.5f, 2.5f), 0f);
         }

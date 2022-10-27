@@ -5,13 +5,15 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public Transform spawner;
-    public GameObject enemyPrefab;
+    public GameObject[] enemyPrefabs;
+    public GameObject hivePrefab;
     public GameObject enemyContainer;
 
     public float enemySpawnCooldown = 1.5f;
     private float tempEnemySpawnCooldown;
     public int enemySpawnAmount = 1;
     public int enemiesSpawned;
+    public int availableEnemyPrefabs = 0;
 
     void Start()
     {
@@ -28,22 +30,51 @@ public class EnemySpawner : MonoBehaviour
             for (int i = 0; i < enemySpawnAmount; i++)
             {
                 Vector3 spawnPosition = new Vector3(spawner.transform.position.x + Random.Range(-2f, 2f), spawner.transform.position.y + Random.Range(-2f, 2f), 0f);
-                GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.Euler(0f, 0f, 0f));
+                GameObject enemy = Instantiate(enemyPrefabs[Random.Range(0, availableEnemyPrefabs + 1)], spawnPosition, Quaternion.Euler(0f, 0f, 0f));
                 enemy.transform.name = "Enemy " + enemiesSpawned;
                 enemy.transform.parent = enemyContainer.transform;
-                if (enemiesSpawned % 10 == 0) IncreaseSpawn();
             }
-            yield return new WaitForSeconds(tempEnemySpawnCooldown);
+            IncreaseSpawn();
+            yield return new WaitForSeconds(enemySpawnCooldown);
         }
     }
 
     void IncreaseSpawn()
     {
-        if (tempEnemySpawnCooldown >= 1f) tempEnemySpawnCooldown -= 0.2f;
-        else
+        if(enemiesSpawned <= 30)
         {
-            tempEnemySpawnCooldown = enemySpawnCooldown - 1;
-            enemySpawnAmount++;
+
+        }
+        else if (enemiesSpawned < 100)
+        {
+            if (enemiesSpawned % 10 == 0) enemySpawnCooldown -= 0.25f;
+        }
+        else if (enemiesSpawned == 100)
+        {
+            enemySpawnCooldown = 1f;
+            availableEnemyPrefabs++;
+        }
+        else if (enemiesSpawned < 180)
+        {
+            if (enemiesSpawned % 10 == 0) enemySpawnCooldown -= 0.1f;
+        }
+        else if (enemiesSpawned == 180)
+        {
+            enemySpawnCooldown = 0.5f;
+        }
+        else if (enemiesSpawned < 300)
+        {
+            if(enemiesSpawned % 20 == 0)
+            {
+                Vector3 spawnPosition = new Vector3(spawner.transform.position.x + Random.Range(-2f, 2f), spawner.transform.position.y + Random.Range(-2f, 2f), 0f);
+                GameObject enemy = Instantiate(hivePrefab, spawnPosition, Quaternion.Euler(0f, 0f, 0f));
+                enemy.transform.name = "Hive " + enemiesSpawned;
+                enemy.transform.parent = enemyContainer.transform;
+            }
+        }
+        else if (enemiesSpawned == 300)
+        {
+            //availableEnemyPrefabs++;
         }
     }
 }

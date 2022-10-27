@@ -996,7 +996,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 20bfec2918038e24eafe403dcc46ac6d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1502,7 +1502,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 9cbb590eb698ed644bc767b768150545, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2699,8 +2699,8 @@ MonoBehaviour:
   - {fileID: 2232567373860330945, guid: bc9cab682f08c574ea308256586adde3, type: 3}
   - {fileID: 1190483578101005537, guid: 887feef865aa5d74c840c56868121a3c, type: 3}
   weaponIconList:
-  - {fileID: 21300000, guid: fb491f8a21e40254b95828ef1cd7d31e, type: 3}
-  - {fileID: 21300000, guid: cb9876f2821f2004c8fa6b5a4c25cec0, type: 3}
+  - {fileID: 1158096068, guid: a6e35883853134f4ea1c3d532df56f8f, type: 3}
+  - {fileID: 21300000, guid: 68921f1b39628074dae521398bef1f6c, type: 3}
   weaponButtons:
   - {fileID: 1916751612}
   - {fileID: 1766930029}
@@ -3774,8 +3774,15 @@ MonoBehaviour:
   - {fileID: 548068898816114584, guid: ed1b474fc46857f4c905e757711d89ef, type: 3}
   - {fileID: 548068898816114584, guid: bd56141a0a364a74eab84210d1628092, type: 3}
   parent: {fileID: 1868967355}
-  cactusPrefab: {fileID: 6811195607003890774, guid: 6e3f576d91c0afc44bde2bec5a707a0a, type: 3}
-  cactus2Prefab: {fileID: 6811195607003890774, guid: bab982014384d9a47b476a893d933b47, type: 3}
+  enviormentObjectsArray:
+  - {fileID: 6811195607003890774, guid: 6e3f576d91c0afc44bde2bec5a707a0a, type: 3}
+  - {fileID: 6811195607003890774, guid: bab982014384d9a47b476a893d933b47, type: 3}
+  - {fileID: 6811195607003890774, guid: 8519c0ba5cb8ce0448db926c15513c5a, type: 3}
+  - {fileID: 6811195607003890774, guid: aba50b685c6cbcf48b9f06408ab81bc5, type: 3}
+  - {fileID: 6811195607003890774, guid: 419822685a9802c4c9a307145ab72805, type: 3}
+  - {fileID: 6811195607003890774, guid: 7a6e3d82f88a8dc4c8b971cf54821aaf, type: 3}
+  - {fileID: 6811195607003890774, guid: 2231fea642ac45747ab26cbe5f6ca685, type: 3}
+  - {fileID: 6811195607003890774, guid: 15cce7cc27ec791499e2f45831e32678, type: 3}
 --- !u!1 &1886153964
 GameObject:
   m_ObjectHideFlags: 0
@@ -4193,11 +4200,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 1280485965}
-  enemyPrefab: {fileID: 497056459374382370, guid: ae84e8ba3caf34b41b4aa8fcfb34c173, type: 3}
+  enemyPrefabs:
+  - {fileID: 497056459374382370, guid: ae84e8ba3caf34b41b4aa8fcfb34c173, type: 3}
+  - {fileID: 497056459374382370, guid: 14ae22f3fd9fd3247ac96a508b397fcc, type: 3}
+  hivePrefab: {fileID: 3310736471768927847, guid: c33dc5932175c4540990659d82c88a79, type: 3}
   enemyContainer: {fileID: 1300785182}
-  enemySpawnCooldown: 3
+  enemySpawnCooldown: 2
   enemySpawnAmount: 1
   enemiesSpawned: 0
+  availableEnemyPrefabs: 0
 --- !u!1 &1981631380
 GameObject:
   m_ObjectHideFlags: 0
