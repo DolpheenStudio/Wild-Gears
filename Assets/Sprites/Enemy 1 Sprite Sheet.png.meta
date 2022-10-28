@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9b6e32a980e492443b9436ce85ef2c08
+guid: ff3e04e55d839934fb85bb747b2ef048
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -113,23 +113,11 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pixilart Sprite Sheet 1_0
+      name: Enemy 1 Sprite Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -143,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dca50a94bd7e2cd4b86fee05bd7ae9cd
-      internalID: -1334808746
+      spriteID: 5890923351301bc4fa3215d98b1dcc2d
+      internalID: 1733560535
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pixilart Sprite Sheet 1_1
+      name: Enemy 1 Sprite Sheet_1
       rect:
         serializedVersion: 2
         x: 1024
@@ -164,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a40791468f9cd324da683c2fd47e4f22
-      internalID: -1580044770
+      spriteID: 16f05b22ab7db5a448ad7ccdaad67e19
+      internalID: -387868151
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pixilart Sprite Sheet 1_2
+      name: Enemy 1 Sprite Sheet_2
       rect:
         serializedVersion: 2
         x: 2048
@@ -185,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d531889a20fe44f4dabd8275215711b4
-      internalID: -697128776
+      spriteID: ab055540d4ccf1a488c733b6fe969060
+      internalID: 1478594960
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pixilart Sprite Sheet 1_3
+      name: Enemy 1 Sprite Sheet_3
       rect:
         serializedVersion: 2
         x: 3072
@@ -206,14 +194,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 194ee0254324aa8428901b06def31791
-      internalID: 1596955782
+      spriteID: b2d9bb3084926f443aa834c31e709b0e
+      internalID: 2120841817
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pixilart Sprite Sheet 1_4
+      name: Enemy 1 Sprite Sheet_4
       rect:
         serializedVersion: 2
         x: 4096
@@ -227,14 +215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24d0aa1384512aa40bc3c9f95044859f
-      internalID: 1417866391
+      spriteID: 19eac8202404b3d4d9d273f81a41e61d
+      internalID: -521662953
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pixilart Sprite Sheet 1_5
+      name: Enemy 1 Sprite Sheet_5
       rect:
         serializedVersion: 2
         x: 5120
@@ -248,14 +236,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b72c48fa84191aa469770b9f306594a1
-      internalID: 489802874
+      spriteID: 787c636015d7c914f98eb3c755e311bb
+      internalID: -1240736084
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pixilart Sprite Sheet 1_6
+      name: Enemy 1 Sprite Sheet_6
       rect:
         serializedVersion: 2
         x: 6144
@@ -269,14 +257,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e093110a099d6b43b13031b1b08ea07
-      internalID: 1641490019
+      spriteID: 48122a2860c42f74c9bdbbe85a538b5d
+      internalID: -748528837
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pixilart Sprite Sheet 1_7
+      name: Enemy 1 Sprite Sheet_7
       rect:
         serializedVersion: 2
         x: 7168
@@ -290,8 +278,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc04f525559492b40807eaec6a26dd2b
-      internalID: 606783959
+      spriteID: 5b64c60518549f742b8197b10c16bb8e
+      internalID: -434372582
       vertices: []
       indices: 
       edges: []
@@ -307,14 +295,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Pixilart Sprite Sheet 1_0: -1334808746
-      Pixilart Sprite Sheet 1_7: 606783959
-      Pixilart Sprite Sheet 1_3: 1596955782
-      Pixilart Sprite Sheet 1_6: 1641490019
-      Pixilart Sprite Sheet 1_5: 489802874
-      Pixilart Sprite Sheet 1_2: -697128776
-      Pixilart Sprite Sheet 1_1: -1580044770
-      Pixilart Sprite Sheet 1_4: 1417866391
+      Enemy 1 Sprite Sheet_1: -387868151
+      Enemy 1 Sprite Sheet_2: 1478594960
+      Enemy 1 Sprite Sheet_6: -748528837
+      Enemy 1 Sprite Sheet_0: 1733560535
+      Enemy 1 Sprite Sheet_3: 2120841817
+      Enemy 1 Sprite Sheet_5: -1240736084
+      Enemy 1 Sprite Sheet_4: -521662953
+      Enemy 1 Sprite Sheet_7: -434372582
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

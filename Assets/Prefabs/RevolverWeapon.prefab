@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   revolverProjectilePrefab: {fileID: 757802737313780845, guid: bbd8bf698e66b97469c0f0591826ca99, type: 3}
-  revolverSkillTree: {fileID: 2592266030665736242, guid: 1c13481e766cbd34a9e4d83629d203d8, type: 3}
+  revolverSkillTree: {fileID: 2592266030665736242, guid: f12f98da4b87c8b4ebf4f5e8ad1d0c12, type: 3}
   playerUIController: {fileID: 0}
   isRicochet: 0
   isFastReload: 0
