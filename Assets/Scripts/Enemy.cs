@@ -17,8 +17,6 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, enemySpeed * Time.deltaTime);
-		
 		if(enemyHealth <= 0f)
         {
 			DestroyEnemy();
@@ -37,7 +35,7 @@ public class Enemy : MonoBehaviour
 	
 	public void DestroyEnemy()
 	{
-		int expPointsAmount = Random.Range(5, 8);
+		int expPointsAmount = Random.Range(4, 7);
 		for(int i = 0; i < expPointsAmount; i++)
 		{
 			Instantiate(expPointPrefab, new Vector3(transform.position.x + (float) Random.Range(-1f, 1f), transform.position.y + Random.Range(-1f, 1f), 0f), Quaternion.Euler(0f, 0f, 0f));

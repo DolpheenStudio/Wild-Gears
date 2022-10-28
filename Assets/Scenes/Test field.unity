@@ -2698,9 +2698,11 @@ MonoBehaviour:
   weaponList:
   - {fileID: 2232567373860330945, guid: bc9cab682f08c574ea308256586adde3, type: 3}
   - {fileID: 1190483578101005537, guid: 887feef865aa5d74c840c56868121a3c, type: 3}
+  - {fileID: 5869464039568036465, guid: 21435eac93234ff4f864bf0eeecdc007, type: 3}
   weaponIconList:
   - {fileID: 1158096068, guid: a6e35883853134f4ea1c3d532df56f8f, type: 3}
   - {fileID: 21300000, guid: 68921f1b39628074dae521398bef1f6c, type: 3}
+  - {fileID: 21300000, guid: 02bc4e25a3775cd43b2e8c44732bde3f, type: 3}
   weaponButtons:
   - {fileID: 1916751612}
   - {fileID: 1766930029}
@@ -4203,7 +4205,7 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 497056459374382370, guid: ae84e8ba3caf34b41b4aa8fcfb34c173, type: 3}
   - {fileID: 497056459374382370, guid: 14ae22f3fd9fd3247ac96a508b397fcc, type: 3}
-  hivePrefab: {fileID: 3310736471768927847, guid: c33dc5932175c4540990659d82c88a79, type: 3}
+  hivePrefab: {fileID: 8974177082504274581, guid: d4940e13d04e9f243bf242cbae11de40, type: 3}
   enemyContainer: {fileID: 1300785182}
   enemySpawnCooldown: 2
   enemySpawnAmount: 1

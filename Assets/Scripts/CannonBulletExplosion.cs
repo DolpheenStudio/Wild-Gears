@@ -6,6 +6,9 @@ public class CannonBulletExplosion : MonoBehaviour
 {
     private CannonWeapon cannonWeapon;
     private Collider2D explosionCollider;
+
+    public GameObject cannonFireFieldPrefab;
+
     private void Start()
     {
         cannonWeapon = FindObjectOfType<CannonWeapon>();
@@ -15,14 +18,15 @@ public class CannonBulletExplosion : MonoBehaviour
     {
         if(collision.transform.tag != "Player")
         {
-            collision.gameObject.GetComponent<Enemy>().DealDamageToEnemy(cannonWeapon.cannonDamage);
+            if(collision.gameObject != null) collision.gameObject.GetComponent<Enemy>().DealDamageToEnemy(cannonWeapon.cannonDamage);
             explosionCollider.enabled = false;
             StartCoroutine(Explode());
+            if (cannonWeapon.isFireField) Instantiate(cannonFireFieldPrefab, transform.position, transform.rotation);
         }
     }
     IEnumerator Explode()
     {
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(0.8f);
         Destroy(gameObject);
     }
 }

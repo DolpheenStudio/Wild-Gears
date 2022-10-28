@@ -22,8 +22,6 @@ public class WeaponPick : MonoBehaviour
         Time.timeScale = 0;
         playerUIController.EnablePickWeaponScreen();
 
-        Debug.Log(weaponList.Count);
-
         if (weaponList.Count == 0)
         {
             for(int i = 0; i < 3; i++)
@@ -73,7 +71,6 @@ public class WeaponPick : MonoBehaviour
             weaponButtons[0].GetComponent<WeaponSlot>().weaponSlot = weaponList[randomWeapon];
             weaponButtons[0].GetComponent<Image>().sprite = weaponIconList[randomWeapon];
 
-
             //Second Weapon Slot
             int secondRandomWeapon = randomWeapon;
 
@@ -93,8 +90,8 @@ public class WeaponPick : MonoBehaviour
                 thirdRandomWeapon = Random.Range(0, weaponList.Count);
             }
 
-            weaponButtons[2].GetComponent<WeaponSlot>().weaponSlot = weaponList[secondRandomWeapon];
-            weaponButtons[2].GetComponent<Image>().sprite = weaponIconList[secondRandomWeapon];
+            weaponButtons[2].GetComponent<WeaponSlot>().weaponSlot = weaponList[thirdRandomWeapon];
+            weaponButtons[2].GetComponent<Image>().sprite = weaponIconList[thirdRandomWeapon];
         }
     }
 }

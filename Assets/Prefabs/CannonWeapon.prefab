@@ -47,4 +47,8 @@ MonoBehaviour:
   cannonAttackSpeed: 2
   cannonProjectileAmount: 1
   cannonDamage: 1
+  isFireField: 0
+  isDoubleShot: 0
   cannonProjectilePrefab: {fileID: 7212408535324149060, guid: e9d9b19add587e841bcd2c5d42a79b00, type: 3}
+  playerDirectionPointer: {fileID: 0}
+  cannonSkillTree: {fileID: 2592266030665736242, guid: 1c13481e766cbd34a9e4d83629d203d8, type: 3}

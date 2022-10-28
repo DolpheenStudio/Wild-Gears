@@ -27,8 +27,6 @@ public class Player : MonoBehaviour
     void Awake()
     {
         playerMaxHealth = playerHealth;
-        //SetPlayerWeapon(revolverWeaponPrefab);
-        
     }
 
     private void Start()
