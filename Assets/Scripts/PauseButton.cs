@@ -14,5 +14,6 @@ public class PauseButton : MonoBehaviour
     {
         Time.timeScale = 0;
         playerUIController.EnableUpgradeScreen();
+        playerUIController.DisablePlayerUI();
     }
 }

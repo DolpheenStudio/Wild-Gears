@@ -15,7 +15,7 @@ public class CannonWeapon : MonoBehaviour
     public bool isDoubleShot;
 
     public GameObject cannonProjectilePrefab;
-    public GameObject playerDirectionPointer;
+    public GameObject playerDirectionIndicator;
     public GameObject cannonSkillTree;
 
     void SetCannonWeapon()
@@ -28,7 +28,7 @@ public class CannonWeapon : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         playerUIController = FindObjectOfType<PlayerUIController>();
-        playerDirectionPointer = GameObject.Find("Player Direction Indicator");
+        playerDirectionIndicator = GameObject.Find("Player Direction Indicator");
 
         SetCannonWeapon();
     }
@@ -44,8 +44,8 @@ public class CannonWeapon : MonoBehaviour
 
         for (int i = 0; i < player.playerProjectileAmount + cannonProjectileAmount; i++)
         {
-            Instantiate(cannonProjectilePrefab, playerDirectionPointer.transform.position, playerDirectionPointer.transform.rotation);
-            if(isDoubleShot) Instantiate(cannonProjectilePrefab, playerDirectionPointer.transform.position, playerDirectionPointer.transform.rotation * Quaternion.Euler(0f, 0f, 180f));
+            Instantiate(cannonProjectilePrefab, playerDirectionIndicator.transform.position, playerDirectionIndicator.transform.rotation);
+            if(isDoubleShot) Instantiate(cannonProjectilePrefab, playerDirectionIndicator.transform.position, playerDirectionIndicator.transform.rotation * Quaternion.Euler(0f, 0f, 180f));
             yield return new WaitForSeconds(.3f);
         }
         yield return new WaitForSeconds(cannonAttackSpeed - .3f);

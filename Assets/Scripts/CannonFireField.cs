@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CannonFireField : MonoBehaviour
 {
-    private float damageCooldown = 1f;
-    private float fireFieldDamage = 0.2f;
+    private float damageCooldown = 0.5f;
+    private float fireFieldDamage = 0.1f;
 
     private void Start()
     {
@@ -20,7 +20,7 @@ public class CannonFireField : MonoBehaviour
             {
                 collision.gameObject.GetComponent<Enemy>().DealDamageToEnemy(fireFieldDamage);
             }
-            damageCooldown = 1f;
+            damageCooldown = 0.5f;
         }
         else
         {

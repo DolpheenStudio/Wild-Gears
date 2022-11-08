@@ -16,8 +16,8 @@ public class SpriteFlip : MonoBehaviour
     void Update()
     {
 
-        if (transform.position.x < this.oldTransformPosition.x) spriteRenderer.flipX = true;
-        else if (transform.position.x > this.oldTransformPosition.x) spriteRenderer.flipX = false;
+        if (transform.position.x < oldTransformPosition.x) spriteRenderer.flipX = true;
+        else spriteRenderer.flipX = false;
 
        oldTransformPosition = transform.position;
     }

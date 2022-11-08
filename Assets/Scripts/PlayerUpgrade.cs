@@ -50,5 +50,6 @@ public class PlayerUpgrade : MonoBehaviour
     {
         Time.timeScale = 1;
         playerUIController.DisableUpgradeScreen();
+        playerUIController.EnablePlayerUI();
     }
 }

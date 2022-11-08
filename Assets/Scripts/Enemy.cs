@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
 	public GameObject expPointPrefab;
 	public float enemyHealth;
 	public float enemyDamage;
+	public bool isOnFire = false;
 	
     void Start()
     {
@@ -25,6 +26,17 @@ public class Enemy : MonoBehaviour
 		if(Vector3.Distance(transform.position, player.transform.position) <= 1f)
         {
 			if (player.isDamagable) player.DealDamage(enemyDamage);
+        }
+    }
+
+	public IEnumerator SetOnFire(float damage)
+    {
+		isOnFire = true;
+		while(true)
+        {
+			DealDamageToEnemy(damage);
+
+			yield return new WaitForSeconds(0.5f);
         }
     }
 

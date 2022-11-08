@@ -21,6 +21,7 @@ public class WeaponPick : MonoBehaviour
     {
         Time.timeScale = 0;
         playerUIController.EnablePickWeaponScreen();
+        playerUIController.DisablePlayerUI();
 
         if (weaponList.Count == 0)
         {

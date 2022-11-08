@@ -26,7 +26,7 @@ public class CannonBulletExplosion : MonoBehaviour
     }
     IEnumerator Explode()
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.6f);
         Destroy(gameObject);
     }
 }

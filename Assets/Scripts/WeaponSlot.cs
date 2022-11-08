@@ -27,6 +27,7 @@ public class WeaponSlot : MonoBehaviour
         }
 
         playerUIController.DisablePickWeaponScreen();
+        playerUIController.EnablePlayerUI();
         Time.timeScale = 1;
     }
 }
