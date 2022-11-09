@@ -47,7 +47,7 @@ MonoBehaviour:
   hammerAttackSpeed: 2
   hammerSpeed: 180
   hammerAmount: 1
-  hammerDamage: 1
+  hammerDamage: 50
   isInfinite: 0
   isLongerHammer: 0
   hammerPrefab: {fileID: 4647331256095539380, guid: 584f441cc369b274ab0e6eb4696b7e21, type: 3}

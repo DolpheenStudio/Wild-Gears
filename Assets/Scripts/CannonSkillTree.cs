@@ -57,7 +57,7 @@ public class CannonSkillTree : MonoBehaviour
     {
         if (player.playerUpgradePoints >= 1)
         {
-            cannonWeapon.cannonDamage += 0.2f;
+            cannonWeapon.cannonDamage += 10f;
             damageUpgrades++;
             player.playerUpgradePoints--;
             ReloadUpgradeTierIndicator();

@@ -6,6 +6,7 @@ public class CannonBulletExplosion : MonoBehaviour
 {
     private CannonWeapon cannonWeapon;
     private Collider2D explosionCollider;
+    private bool isColliding = false;
 
     public GameObject cannonFireFieldPrefab;
 
@@ -16,9 +17,14 @@ public class CannonBulletExplosion : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(isColliding)
+        {
+            return;
+        }
         if(collision.transform.tag != "Player")
         {
-            if(collision.gameObject != null) collision.gameObject.GetComponent<Enemy>().DealDamageToEnemy(cannonWeapon.cannonDamage);
+            isColliding = true;
+            if(collision.gameObject != null) collision.gameObject.GetComponent<Enemy>().DealDamageToEnemy(cannonWeapon.cannonDamage, transform.position);
             explosionCollider.enabled = false;
             StartCoroutine(Explode());
             if (cannonWeapon.isFireField) Instantiate(cannonFireFieldPrefab, transform.position, transform.rotation);

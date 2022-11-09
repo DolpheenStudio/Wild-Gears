@@ -51,5 +51,5 @@ MonoBehaviour:
   isFastReload: 0
   revolverAttackSpeed: 2
   revolverRange: 5
-  revolverDamage: 2
+  revolverDamage: 100
   revolverProjectileAmount: 1

@@ -59,7 +59,7 @@ public class HammerSkillTree : MonoBehaviour
     {
         if (player.playerUpgradePoints >= 1)
         {
-            hammerWeapon.hammerDamage += 0.1f;
+            hammerWeapon.hammerDamage += 10f;
             damageUpgrades++;
             player.playerUpgradePoints--;
             ReloadUpgradeTierIndicator();

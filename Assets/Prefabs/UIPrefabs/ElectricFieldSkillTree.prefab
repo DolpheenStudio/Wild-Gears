@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2592266030797797862}
   - component: {fileID: 2592266028804019174}
   m_Layer: 5
-  m_Name: Flame Cross
+  m_Name: Life Steal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,9 +122,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4654052295942961613}
-        m_TargetAssemblyTypeName: FlameThrowerSkillTree, Assembly-CSharp
-        m_MethodName: AddFlameCross
+      - m_Target: {fileID: 1992432575015891245}
+        m_TargetAssemblyTypeName: ElectricFieldSkillTree, Assembly-CSharp
+        m_MethodName: AddLifeSteal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -200,9 +200,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'FLAME
+  m_text: 'LIFE
 
-    CROSS'
+    STEAL'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -607,8 +607,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4654052295942961613}
-        m_TargetAssemblyTypeName: FlameThrowerSkillTree, Assembly-CSharp
+      - m_Target: {fileID: 1992432575015891245}
+        m_TargetAssemblyTypeName: ElectricFieldSkillTree, Assembly-CSharp
         m_MethodName: AddAttackSpeed
         m_Mode: 1
         m_Arguments:
@@ -767,7 +767,7 @@ GameObject:
   - component: {fileID: 2592266029642808992}
   - component: {fileID: 2592266028804019173}
   m_Layer: 5
-  m_Name: Set On Fire
+  m_Name: Slow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -876,9 +876,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4654052295942961613}
-        m_TargetAssemblyTypeName: FlameThrowerSkillTree, Assembly-CSharp
-        m_MethodName: AddSetOnFire
+      - m_Target: {fileID: 1992432575015891245}
+        m_TargetAssemblyTypeName: ElectricFieldSkillTree, Assembly-CSharp
+        m_MethodName: AddSlow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1010,8 +1010,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4654052295942961613}
-        m_TargetAssemblyTypeName: FlameThrowerSkillTree, Assembly-CSharp
+      - m_Target: {fileID: 1992432575015891245}
+        m_TargetAssemblyTypeName: ElectricFieldSkillTree, Assembly-CSharp
         m_MethodName: AddSize
         m_Mode: 1
         m_Arguments:
@@ -1088,11 +1088,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'SET
-
-    ON
-
-    FIRE'
+  m_text: SLOW
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1283,8 +1279,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4654052295942961613}
-        m_TargetAssemblyTypeName: FlameThrowerSkillTree, Assembly-CSharp
+      - m_Target: {fileID: 1992432575015891245}
+        m_TargetAssemblyTypeName: ElectricFieldSkillTree, Assembly-CSharp
         m_MethodName: AddSize
         m_Mode: 1
         m_Arguments:
@@ -1939,9 +1935,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2592266028804019172}
-  - component: {fileID: 4654052295942961613}
+  - component: {fileID: 1992432575015891245}
   m_Layer: 5
-  m_Name: FlameThrowerSkillTree
+  m_Name: ElectricFieldSkillTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1974,7 +1970,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4654052295942961613
+--- !u!114 &1992432575015891245
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1983,7 +1979,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2592266030665736242}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 117c389bb3381a440ba3239220b40ac1, type: 3}
+  m_Script: {fileID: 11500000, guid: 095ca2e526c4c494eb9adf9564778685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   addAttackSpeedButton: {fileID: 2592266028804019178}
@@ -1995,9 +1991,9 @@ MonoBehaviour:
   isAddSizeButton: 0
   addSizeButton2: {fileID: 2592266028804019175}
   isAddSizeButton2: 0
-  addFlameCrossButton: {fileID: 2592266028804019174}
-  addSetOnFireButton: {fileID: 2592266028804019173}
-  flameThrowerWeapon: {fileID: 0}
+  addLifeStealButton: {fileID: 2592266028804019174}
+  addSlowButton: {fileID: 2592266028804019173}
+  electricFieldWeapon: {fileID: 0}
 --- !u!1 &2592266030726911520
 GameObject:
   m_ObjectHideFlags: 0
@@ -2121,8 +2117,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4654052295942961613}
-        m_TargetAssemblyTypeName: FlameThrowerSkillTree, Assembly-CSharp
+      - m_Target: {fileID: 1992432575015891245}
+        m_TargetAssemblyTypeName: ElectricFieldSkillTree, Assembly-CSharp
         m_MethodName: AddDamage
         m_Mode: 1
         m_Arguments:

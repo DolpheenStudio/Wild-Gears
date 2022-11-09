@@ -20,7 +20,7 @@ public class Hammer : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<Enemy>().DealDamageToEnemy(hammerWeapon.hammerDamage);
+            collision.gameObject.GetComponent<Enemy>().DealDamageToEnemy(hammerWeapon.hammerDamage, collision.transform.position);
         }
     }
 }

@@ -8,6 +8,7 @@ public class Flame : MonoBehaviour
     public FlameThrowerWeapon flameThrowerWeapon;
 
     private float damageCooldown = 0.3f;
+    private List<GameObject> enemyInRangeList = new List<GameObject>();
 
     void Start()
     {
@@ -17,7 +18,18 @@ public class Flame : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(Time.time);
+        if (damageCooldown >= 0f)
+        {
+            damageCooldown -= Time.deltaTime;
+        }
+        else if (enemyInRangeList.Count > 0)
+        {
+            foreach (GameObject enemy in enemyInRangeList)
+            {
+                enemy.GetComponent<Enemy>().DealDamageToEnemy(flameThrowerWeapon.flameThrowerDamage, enemy.transform.position);
+            }
+            damageCooldown = 0.3f;
+        }
     }
 
     IEnumerator DestroyFlame()
@@ -34,30 +46,23 @@ public class Flame : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void OnTriggerStay2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (damageCooldown <= 0f)
+        if (collision.transform.tag != "Player")
         {
-            if (collision.transform.tag != "Player")
+            enemyInRangeList.Add(collision.gameObject);
+            if (flameThrowerWeapon.isSetOnFire)
             {
-                collision.gameObject.GetComponent<Enemy>().DealDamageToEnemy(flameThrowerWeapon.flameThrowerDamage);
+                if(!collision.gameObject.GetComponent<Enemy>().isOnFire) collision.gameObject.GetComponent<Enemy>().SetOnFire(0.1f);
             }
-            damageCooldown = 0.3f;
-        }
-        else
-        {
-            damageCooldown -= Time.deltaTime;
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (flameThrowerWeapon.isSetOnFire)
+        if (collision.transform.tag != "Player")
         {
-            if (collision.transform.tag != "Player")
-            {
-                if(!collision.gameObject.GetComponent<Enemy>().isOnFire) StartCoroutine(collision.gameObject.GetComponent<Enemy>().SetOnFire(0.1f));
-            }
+            enemyInRangeList.Remove(collision.gameObject);
         }
     }
 }

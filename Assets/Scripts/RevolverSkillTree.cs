@@ -59,7 +59,7 @@ public class RevolverSkillTree : MonoBehaviour
     {
         if (player.playerUpgradePoints >= 1)
         {
-            revolverWeapon.revolverDamage += 0.1f;
+            revolverWeapon.revolverDamage += 10f;
             damageUpgrades++;
             player.playerUpgradePoints--;
             ReloadUpgradeTierIndicator();

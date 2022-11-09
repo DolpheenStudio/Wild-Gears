@@ -94,7 +94,7 @@ public class RevolverBullet : MonoBehaviour
         if (collision.gameObject.tag != "Player")
         {
             isColliding = true;
-            if(targetEnemy != null && collision.gameObject.tag == "Enemy") collision.gameObject.GetComponent<Enemy>().DealDamageToEnemy(revolverWeapon.revolverDamage);
+            if(targetEnemy != null && collision.gameObject.tag == "Enemy") collision.gameObject.GetComponent<Enemy>().DealDamageToEnemy(revolverWeapon.revolverDamage, transform.position);
             if (canRicochet)
             {
                 FindClosestEnemy(collision.gameObject);

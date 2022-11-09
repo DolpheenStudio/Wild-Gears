@@ -10,9 +10,13 @@ public class Enemy : MonoBehaviour
 	public float enemyHealth;
 	public float enemyDamage;
 	public bool isOnFire = false;
+
+	public GameObject onFireAnimation;
+	public GameObject damagePopupPrefab;
 	
     void Start()
     {
+		onFireAnimation.SetActive(false);
         player = FindObjectOfType<Player>();
     }
 
@@ -29,20 +33,29 @@ public class Enemy : MonoBehaviour
         }
     }
 
-	public IEnumerator SetOnFire(float damage)
+	public void SetOnFire(float damage)
     {
-		isOnFire = true;
-		while(true)
-        {
-			DealDamageToEnemy(damage);
-
-			yield return new WaitForSeconds(0.5f);
-        }
+		StartCoroutine(SetOnFireCoroutine(damage));
     }
 
-	public void DealDamageToEnemy(float damage)
+	public IEnumerator SetOnFireCoroutine(float damage)
+    {
+		onFireAnimation.SetActive(true);
+		isOnFire = true;
+		while (true)
+		{
+			Debug.Log("Fire");
+			DealDamageToEnemy(damage, transform.position);
+			yield return new WaitForSeconds(.5f);
+			Debug.Log("End Fire");
+		}
+    }
+
+	public void DealDamageToEnemy(float damage, Vector3 damagePosition)
     {
 		enemyHealth -= damage;
+		GameObject damagePopup = Instantiate(damagePopupPrefab, damagePosition, Quaternion.identity);
+		damagePopup.GetComponent<DamagePopup>().SetDamageText(damage.ToString());
     }
 	
 	public void DestroyEnemy()

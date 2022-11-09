@@ -11,9 +11,10 @@ public class FlameThrowerWeapon : MonoBehaviour
 
     public int flameSize = 0;
     public float flameThrowerAttackSpeed;
-    public float flameThrowerDamage = 0.5f;
+    public float flameThrowerDamage = 0.1f;
     
     public GameObject flamePrefab;
+    public GameObject flameThrowerSkillTree;
 
     public bool isFlameCross;
     public bool isSetOnFire;
@@ -25,8 +26,15 @@ public class FlameThrowerWeapon : MonoBehaviour
         playerUIController = FindObjectOfType<PlayerUIController>();
 
         isShooting = false;
+
+        SetFlameThrowerWeapon();
     }
 
+    void SetFlameThrowerWeapon()
+    {
+        GameObject weaponGameObject = Instantiate(flameThrowerSkillTree, playerUIController.FreeWeaponSlot().transform);
+        player.playerWeaponAmount++;
+    }
 
     void Update()
     {

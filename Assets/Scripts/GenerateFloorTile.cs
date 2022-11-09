@@ -5,7 +5,6 @@ using UnityEngine;
 public class GenerateFloorTile : MonoBehaviour
 {
     private int tileSize = 5;
-    private float halfTileSize;
     
     [Range(1, 3)]
     public int visibleTiles = 1;
@@ -23,9 +22,6 @@ public class GenerateFloorTile : MonoBehaviour
     {
         UpdateCurrentPlayerTile();
         UpdateVisibleTiles();
-
-        halfTileSize = tileSize / 2f;
-        Debug.Log(halfTileSize);
     }
 
     void Update()
@@ -79,9 +75,11 @@ public class GenerateFloorTile : MonoBehaviour
         int spawnEnviorment = Random.Range(0, enviormentObjectsArray.Length * 2);
         if(spawnEnviorment < enviormentObjectsArray.Length)
         {
-            GameObject cactusGameObject = Instantiate(enviormentObjectsArray[spawnEnviorment], Vector3.zero, transform.rotation);
-            cactusGameObject.transform.SetParent(tempTile.transform);
-            cactusGameObject.transform.localPosition = new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-2.5f, 2.5f), 0f);
+            GameObject cactusGameObject = Instantiate(enviormentObjectsArray[spawnEnviorment], tempTile.transform);
+            cactusGameObject.transform.localScale = new Vector3(0.05f, 0.05f, 0f);
+            cactusGameObject.transform.rotation = Quaternion.identity;
+            cactusGameObject.transform.position += new Vector3(Random.Range(-tileSize / 2, tileSize / 2), Random.Range(-tileSize / 2, tileSize / 2), 0f);
+            //cactusGameObject.transform.SetParent(tempTile.transform);
         }
         tilesDictionary.Add(tileCoords, tempTile);
     }

@@ -217,8 +217,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 0
   expPointPrefab: {fileID: 9029414067892307489, guid: 6f390b13db8abd248b82b368f433fcd6, type: 3}
-  enemyHealth: 0.5
+  enemyHealth: 20
   enemyDamage: 0.5
+  isOnFire: 0
+  onFireAnimation: {fileID: 7800679026515846705, guid: 69362ba502d917042afa28d6b0c94995, type: 3}
+  damagePopupPrefab: {fileID: 1820745643609292349, guid: 082ba4a6ade2e3048a03da6fdc0de3de, type: 3}
 --- !u!60 &9016358618125279355
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -318,8 +321,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 0
   expPointPrefab: {fileID: 9029414067892307489, guid: 6f390b13db8abd248b82b368f433fcd6, type: 3}
-  enemyHealth: 0.5
+  enemyHealth: 20
   enemyDamage: 0.5
+  isOnFire: 0
+  onFireAnimation: {fileID: 7800679026515846705, guid: 69362ba502d917042afa28d6b0c94995, type: 3}
+  damagePopupPrefab: {fileID: 1820745643609292349, guid: 082ba4a6ade2e3048a03da6fdc0de3de, type: 3}
 --- !u!60 &5082726671470694757
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -587,8 +593,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 0
   expPointPrefab: {fileID: 9029414067892307489, guid: 6f390b13db8abd248b82b368f433fcd6, type: 3}
-  enemyHealth: 0.5
+  enemyHealth: 20
   enemyDamage: 0.5
+  isOnFire: 0
+  onFireAnimation: {fileID: 7800679026515846705, guid: 69362ba502d917042afa28d6b0c94995, type: 3}
+  damagePopupPrefab: {fileID: 1820745643609292349, guid: 082ba4a6ade2e3048a03da6fdc0de3de, type: 3}
 --- !u!60 &8748769069559796223
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -772,8 +781,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 0
   expPointPrefab: {fileID: 9029414067892307489, guid: 6f390b13db8abd248b82b368f433fcd6, type: 3}
-  enemyHealth: 0.5
+  enemyHealth: 20
   enemyDamage: 0.5
+  isOnFire: 0
+  onFireAnimation: {fileID: 7800679026515846705, guid: 69362ba502d917042afa28d6b0c94995, type: 3}
+  damagePopupPrefab: {fileID: 1820745643609292349, guid: 082ba4a6ade2e3048a03da6fdc0de3de, type: 3}
 --- !u!60 &7038231943299688420
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -873,8 +885,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 0
   expPointPrefab: {fileID: 9029414067892307489, guid: 6f390b13db8abd248b82b368f433fcd6, type: 3}
-  enemyHealth: 0.5
+  enemyHealth: 20
   enemyDamage: 0.5
+  isOnFire: 0
+  onFireAnimation: {fileID: 7800679026515846705, guid: 69362ba502d917042afa28d6b0c94995, type: 3}
+  damagePopupPrefab: {fileID: 1820745643609292349, guid: 082ba4a6ade2e3048a03da6fdc0de3de, type: 3}
 --- !u!60 &8050125585466756076
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1058,8 +1073,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 0
   expPointPrefab: {fileID: 9029414067892307489, guid: 6f390b13db8abd248b82b368f433fcd6, type: 3}
-  enemyHealth: 0.5
+  enemyHealth: 20
   enemyDamage: 0.5
+  isOnFire: 0
+  onFireAnimation: {fileID: 7800679026515846705, guid: 69362ba502d917042afa28d6b0c94995, type: 3}
+  damagePopupPrefab: {fileID: 1820745643609292349, guid: 082ba4a6ade2e3048a03da6fdc0de3de, type: 3}
 --- !u!60 &4498176901205158594
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1243,8 +1261,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 0
   expPointPrefab: {fileID: 9029414067892307489, guid: 6f390b13db8abd248b82b368f433fcd6, type: 3}
-  enemyHealth: 0.5
+  enemyHealth: 20
   enemyDamage: 0.5
+  isOnFire: 0
+  onFireAnimation: {fileID: 7800679026515846705, guid: 69362ba502d917042afa28d6b0c94995, type: 3}
+  damagePopupPrefab: {fileID: 1820745643609292349, guid: 082ba4a6ade2e3048a03da6fdc0de3de, type: 3}
 --- !u!60 &6768626105551672266
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1344,8 +1365,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 0
   expPointPrefab: {fileID: 9029414067892307489, guid: 6f390b13db8abd248b82b368f433fcd6, type: 3}
-  enemyHealth: 0.5
+  enemyHealth: 20
   enemyDamage: 0.5
+  isOnFire: 0
+  onFireAnimation: {fileID: 7800679026515846705, guid: 69362ba502d917042afa28d6b0c94995, type: 3}
+  damagePopupPrefab: {fileID: 1820745643609292349, guid: 082ba4a6ade2e3048a03da6fdc0de3de, type: 3}
 --- !u!60 &218358172445501117
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1445,8 +1469,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 0
   expPointPrefab: {fileID: 9029414067892307489, guid: 6f390b13db8abd248b82b368f433fcd6, type: 3}
-  enemyHealth: 0.5
+  enemyHealth: 20
   enemyDamage: 0.5
+  isOnFire: 0
+  onFireAnimation: {fileID: 7800679026515846705, guid: 69362ba502d917042afa28d6b0c94995, type: 3}
+  damagePopupPrefab: {fileID: 1820745643609292349, guid: 082ba4a6ade2e3048a03da6fdc0de3de, type: 3}
 --- !u!60 &2963806176911344317
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -88,6 +88,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void HealPlayer(float heal)
+    {
+        playerHealth += heal;
+    }
+
     void PlayerDeath()
     {
         SceneManager.LoadScene(1);

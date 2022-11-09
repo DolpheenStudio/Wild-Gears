@@ -47,6 +47,8 @@ MonoBehaviour:
   playerDirectionIndicator: {fileID: 0}
   flameSize: 0
   flameThrowerAttackSpeed: 3
-  flameThrowerDamage: 0.5
+  flameThrowerDamage: 15
   flamePrefab: {fileID: 6340621186639157734, guid: 7aeb6852d05cbd141b182e2c79a1a66a, type: 3}
+  flameThrowerSkillTree: {fileID: 2592266030665736242, guid: f861240412d72f3488f89ba900d42abd, type: 3}
   isFlameCross: 0
+  isSetOnFire: 0
