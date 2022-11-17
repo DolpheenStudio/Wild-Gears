@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 1.5
   expPointPrefab: {fileID: 9029414067892307489, guid: 6f390b13db8abd248b82b368f433fcd6, type: 3}
+  barrelPrefab: {fileID: 3686703757664039764, guid: 0a8cf57584e11bf42a30f76bc329d6f5, type: 3}
   enemyHealth: 100
   enemyDamage: 2
   isOnFire: 0

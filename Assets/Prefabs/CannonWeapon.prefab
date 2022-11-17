@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cannonAttackSpeed: 2
   cannonProjectileAmount: 1
-  cannonDamage: 1
+  cannonDamage: 100
   isFireField: 0
   isDoubleShot: 0
   cannonProjectilePrefab: {fileID: 7212408535324149060, guid: e9d9b19add587e841bcd2c5d42a79b00, type: 3}

@@ -28,7 +28,7 @@ public class Flame : MonoBehaviour
             {
                 enemy.GetComponent<Enemy>().DealDamageToEnemy(flameThrowerWeapon.flameThrowerDamage, enemy.transform.position);
             }
-            damageCooldown = 0.3f;
+            damageCooldown = 0.1f;
         }
     }
 
@@ -48,19 +48,19 @@ public class Flame : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.tag != "Player")
+        if (collision.transform.tag == "Enemy")
         {
             enemyInRangeList.Add(collision.gameObject);
             if (flameThrowerWeapon.isSetOnFire)
             {
-                if(!collision.gameObject.GetComponent<Enemy>().isOnFire) collision.gameObject.GetComponent<Enemy>().SetOnFire(0.1f);
+                if(!collision.gameObject.GetComponent<Enemy>().isOnFire) collision.gameObject.GetComponent<Enemy>().SetOnFire(5f);
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.transform.tag != "Player")
+        if (collision.transform.tag == "Enemy")
         {
             enemyInRangeList.Remove(collision.gameObject);
         }

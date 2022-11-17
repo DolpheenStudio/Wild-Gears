@@ -11,8 +11,8 @@ public class RevolverBullet : MonoBehaviour
     private bool canRicochet;
     private float revolverBulletSpeed = 8f;
 
-    public GameObject[] enemiesArray;
-    public List<GameObject> enemiesList = new List<GameObject>();
+    public GameObject[] targetsArray;
+    public List<GameObject> targetsList = new List<GameObject>();
 
     void Start()
     {
@@ -41,45 +41,56 @@ public class RevolverBullet : MonoBehaviour
 
     void FindClosestEnemy()
     {
-        enemiesArray = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach(GameObject enemy in enemiesArray)
+        targetsArray = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject target in targetsArray)
         {
-            enemiesList.Add(enemy);
+            targetsList.Add(target);
+        }
+        targetsArray = GameObject.FindGameObjectsWithTag("PickUps");
+        foreach (GameObject target in targetsArray)
+        {
+            targetsList.Add(target);
         }
 
-        GameObject tempEnemy = null;
+        GameObject tempTarget = null;
 
         float distance = Mathf.Infinity;
-        foreach (GameObject enemy in enemiesList)
+        foreach (GameObject target in targetsList)
         {
-            if (Vector3.Distance(transform.position, enemy.transform.position) < distance)
+            if (Vector3.Distance(transform.position, target.transform.position) < distance)
             {
-                distance = Vector3.Distance(transform.position, enemy.transform.position);
-                tempEnemy = enemy;
+                distance = Vector3.Distance(transform.position, target.transform.position);
+                tempTarget = target;
             }
         }
-        targetEnemy = tempEnemy;
+        targetEnemy = tempTarget;
     }
 
-    void FindClosestEnemy(GameObject lastEnemy)
+    void FindClosestEnemy(GameObject lastTarget)
     {
-        enemiesArray = GameObject.FindGameObjectsWithTag("Enemy");
-        enemiesList.Clear();
-        foreach (GameObject enemy in enemiesArray)
+        targetsArray = GameObject.FindGameObjectsWithTag("Enemy");
+        targetsList.Clear();
+        foreach (GameObject targets in targetsArray)
         {
-            enemiesList.Add(enemy);
+            targetsList.Add(targets);
         }
 
-        enemiesList.Remove(lastEnemy);
+        targetsArray = GameObject.FindGameObjectsWithTag("PickUps");
+        foreach (GameObject target in targetsArray)
+        {
+            targetsList.Add(target);
+        }
+
+        targetsList.Remove(lastTarget);
         GameObject tempEnemy = null;
 
         float distance = Mathf.Infinity;
-        foreach (GameObject enemy in enemiesList)
+        foreach (GameObject target in targetsList)
         {
-            if (Vector3.Distance(transform.position, enemy.transform.position) < distance)
+            if (Vector3.Distance(transform.position, target.transform.position) < distance)
             {
-                distance = Vector3.Distance(transform.position, enemy.transform.position);
-                tempEnemy = enemy;
+                distance = Vector3.Distance(transform.position, target.transform.position);
+                tempEnemy = target;
             }
         }
         targetEnemy = tempEnemy;

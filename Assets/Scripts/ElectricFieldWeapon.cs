@@ -22,6 +22,8 @@ public class ElectricFieldWeapon : MonoBehaviour
     private void SetElectricField()
     {
         GameObject weaponGameObject = Instantiate(electricFieldSkillTree, playerUIController.FreeWeaponSlot().transform);
+
+        player.playerWeaponAmount++;
     }
 
     void Start()
@@ -48,7 +50,7 @@ public class ElectricFieldWeapon : MonoBehaviour
                 enemy.GetComponent<Enemy>().DealDamageToEnemy(electricFieldDamage, enemy.transform.position);
                 if (isLifeSteal)
                 {
-                    player.HealPlayer(electricFieldDamage * 0.01f);
+                    player.HealPlayer(electricFieldDamage * 0.001f);
                 }
             }
             damageCooldown = electricFieldAttackSpeed;
@@ -57,25 +59,25 @@ public class ElectricFieldWeapon : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isSlow)
-        {
-            collision.gameObject.GetComponent<Enemy>().enemySpeed *= 0.5f;
-        }
-        if(collision.transform.tag != "Player")
+        if(collision.transform.tag == "Enemy")
         {
             enemyInRangeList.Add(collision.gameObject);
+            if (isSlow)
+            {
+                collision.gameObject.GetComponent<Enemy>().enemySpeed *= 0.5f;
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
-    {
-        if(isSlow)
-        {
-            collision.gameObject.GetComponent<Enemy>().enemySpeed *= 2f;
-        }
-        if (collision.transform.tag != "Player")
+    { 
+        if (collision.transform.tag == "Enemy")
         {
             enemyInRangeList.Remove(collision.gameObject);
+            if (isSlow)
+            {
+                collision.gameObject.GetComponent<Enemy>().enemySpeed *= 2f;
+            }
         }
     }
 

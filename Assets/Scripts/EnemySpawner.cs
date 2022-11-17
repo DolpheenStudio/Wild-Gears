@@ -74,7 +74,15 @@ public class EnemySpawner : MonoBehaviour
         }
         else if (enemiesSpawned == 300)
         {
-            //availableEnemyPrefabs++;
+            enemySpawnCooldown = 0.5f;
+        }
+        else if (enemiesSpawned < 500)
+        {
+            if (enemiesSpawned % 50 == 0) enemySpawnCooldown -= 0.1f;
+        }
+        else if (enemiesSpawned == 500)
+        {
+            enemySpawnCooldown = 0.1f;
         }
     }
 }

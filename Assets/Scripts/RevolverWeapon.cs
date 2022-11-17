@@ -45,19 +45,24 @@ public class RevolverWeapon : MonoBehaviour
     GameObject FindClosestEnemy()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        GameObject closestEnemy = null;
+		GameObject[] barrels = GameObject.FindGameObjectsWithTag("PickUps");
+		GameObject[] targetableGameObjects = new GameObject[enemies.Length + barrels.Length];
+		enemies.CopyTo(targetableGameObjects, 0);
+		barrels.CopyTo(targetableGameObjects, enemies.Length);
+        GameObject closestTarget = null;
 
         float distance = Mathf.Infinity;
-        foreach (GameObject enemy in enemies)
+        foreach (GameObject target in targetableGameObjects)
         {
-            if (Vector3.Distance(transform.position, enemy.transform.position) < distance)
+            if (Vector3.Distance(transform.position, target.transform.position) < distance)
             {
-                distance = Vector3.Distance(transform.position, enemy.transform.position);
-                closestEnemy = enemy;
+                distance = Vector3.Distance(transform.position, target.transform.position);
+				closestTarget = target;
             }
         }
-        return closestEnemy;
+        return closestTarget;
     }
+
     IEnumerator Shoot()
     {
 		isShooting = true;

@@ -15,14 +15,14 @@ public class UpgradePointsCounter : MonoBehaviour
         text = GetComponent<TMP_Text>();
 
         oldUpgradePoints = player.playerUpgradePoints;
-        text.SetText("Upgrade Points " + player.playerUpgradePoints.ToString() + " Level " + player.playerLevel);
+        text.SetText("Upgrade Points: " + player.playerUpgradePoints.ToString());
     }
 
     void Update()
     {
         if(oldUpgradePoints != player.playerUpgradePoints)
         {
-            text.SetText("Upgrade Points " + player.playerUpgradePoints.ToString() + " Level " + player.playerLevel);
+            text.SetText("Upgrade Points: " + player.playerUpgradePoints.ToString());
             oldUpgradePoints = player.playerUpgradePoints;
         }
     }

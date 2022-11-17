@@ -5,7 +5,7 @@ using UnityEngine;
 public class ExpPoint : MonoBehaviour
 {
 	private Player player;
-	private bool isInRange = false;
+	public bool isInRange = false;
 	
     void Start()
     {

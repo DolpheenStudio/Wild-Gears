@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     private Player player;
     public float enemySpeed;
 	public GameObject expPointPrefab;
+	public GameObject barrelPrefab;
 	public float enemyHealth;
 	public float enemyDamage;
 	public bool isOnFire = false;
@@ -44,10 +45,8 @@ public class Enemy : MonoBehaviour
 		isOnFire = true;
 		while (true)
 		{
-			Debug.Log("Fire");
 			DealDamageToEnemy(damage, transform.position);
 			yield return new WaitForSeconds(.5f);
-			Debug.Log("End Fire");
 		}
     }
 
@@ -65,6 +64,10 @@ public class Enemy : MonoBehaviour
 		{
 			Instantiate(expPointPrefab, new Vector3(transform.position.x + (float) Random.Range(-1f, 1f), transform.position.y + Random.Range(-1f, 1f), 0f), Quaternion.Euler(0f, 0f, 0f));
 		}
+		if(Random.Range(0, 100) <= 10)
+        {
+			Instantiate(barrelPrefab, transform.position, Quaternion.identity);
+        }
 		Destroy(gameObject);
 	}
 }

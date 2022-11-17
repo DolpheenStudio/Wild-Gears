@@ -217,6 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 0
   expPointPrefab: {fileID: 9029414067892307489, guid: 6f390b13db8abd248b82b368f433fcd6, type: 3}
+  barrelPrefab: {fileID: 3686703757664039764, guid: 0a8cf57584e11bf42a30f76bc329d6f5, type: 3}
   enemyHealth: 20
   enemyDamage: 0.5
   isOnFire: 0
@@ -321,6 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 0
   expPointPrefab: {fileID: 9029414067892307489, guid: 6f390b13db8abd248b82b368f433fcd6, type: 3}
+  barrelPrefab: {fileID: 3686703757664039764, guid: 0a8cf57584e11bf42a30f76bc329d6f5, type: 3}
   enemyHealth: 20
   enemyDamage: 0.5
   isOnFire: 0
@@ -593,6 +595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 0
   expPointPrefab: {fileID: 9029414067892307489, guid: 6f390b13db8abd248b82b368f433fcd6, type: 3}
+  barrelPrefab: {fileID: 3686703757664039764, guid: 0a8cf57584e11bf42a30f76bc329d6f5, type: 3}
   enemyHealth: 20
   enemyDamage: 0.5
   isOnFire: 0
@@ -781,6 +784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 0
   expPointPrefab: {fileID: 9029414067892307489, guid: 6f390b13db8abd248b82b368f433fcd6, type: 3}
+  barrelPrefab: {fileID: 3686703757664039764, guid: 0a8cf57584e11bf42a30f76bc329d6f5, type: 3}
   enemyHealth: 20
   enemyDamage: 0.5
   isOnFire: 0
@@ -885,6 +889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 0
   expPointPrefab: {fileID: 9029414067892307489, guid: 6f390b13db8abd248b82b368f433fcd6, type: 3}
+  barrelPrefab: {fileID: 3686703757664039764, guid: 0a8cf57584e11bf42a30f76bc329d6f5, type: 3}
   enemyHealth: 20
   enemyDamage: 0.5
   isOnFire: 0
@@ -1073,6 +1078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 0
   expPointPrefab: {fileID: 9029414067892307489, guid: 6f390b13db8abd248b82b368f433fcd6, type: 3}
+  barrelPrefab: {fileID: 3686703757664039764, guid: 0a8cf57584e11bf42a30f76bc329d6f5, type: 3}
   enemyHealth: 20
   enemyDamage: 0.5
   isOnFire: 0
@@ -1261,6 +1267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 0
   expPointPrefab: {fileID: 9029414067892307489, guid: 6f390b13db8abd248b82b368f433fcd6, type: 3}
+  barrelPrefab: {fileID: 3686703757664039764, guid: 0a8cf57584e11bf42a30f76bc329d6f5, type: 3}
   enemyHealth: 20
   enemyDamage: 0.5
   isOnFire: 0
@@ -1365,6 +1372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 0
   expPointPrefab: {fileID: 9029414067892307489, guid: 6f390b13db8abd248b82b368f433fcd6, type: 3}
+  barrelPrefab: {fileID: 3686703757664039764, guid: 0a8cf57584e11bf42a30f76bc329d6f5, type: 3}
   enemyHealth: 20
   enemyDamage: 0.5
   isOnFire: 0
@@ -1469,6 +1477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 0
   expPointPrefab: {fileID: 9029414067892307489, guid: 6f390b13db8abd248b82b368f433fcd6, type: 3}
+  barrelPrefab: {fileID: 3686703757664039764, guid: 0a8cf57584e11bf42a30f76bc329d6f5, type: 3}
   enemyHealth: 20
   enemyDamage: 0.5
   isOnFire: 0
@@ -1745,4 +1754,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d36291425c89ab47a0f52ab97c64db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHiveMovementSpeed: 1
+  enemyHiveMovementSpeed: 0.5

@@ -6,7 +6,7 @@ public class GenerateFloorTile : MonoBehaviour
 {
     private int tileSize = 5;
     
-    [Range(1, 3)]
+    [Range(1, 5)]
     public int visibleTiles = 1;
 
     private int currentPlayerX;

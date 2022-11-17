@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public GameObject revolverWeaponPrefab;
     public GameObject hammerWeaponPrefab;
     public WeaponPick weaponPick;
+    public PlayerUIController playerUIController;
 
     void Awake()
     {
@@ -65,7 +66,14 @@ public class Player : MonoBehaviour
 
         if (playerLevel == 10 || playerLevel == 20)
         {
+            Time.timeScale = 0;
             weaponPick.PickWeapon();
+        }
+        else
+        {
+            Time.timeScale = 0;
+            playerUIController.EnableUpgradeScreen();
+            playerUIController.DisablePlayerUI();
         }
     }
 

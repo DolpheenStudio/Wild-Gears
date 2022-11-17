@@ -31,7 +31,7 @@ public class CannonFireField : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.tag != "Player")
+        if (collision.transform.tag == "Enemy")
         {
             enemyInRangeList.Add(collision.gameObject);
         }
@@ -39,7 +39,7 @@ public class CannonFireField : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.transform.tag != "Player")
+        if (collision.transform.tag == "Enemy")
         {
             enemyInRangeList.Remove(collision.gameObject);
         }
