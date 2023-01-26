@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     public DirectionPointerRotation directionPointer;
 
     private float joystickSensitivity = .2f;
-    private bool isDashing;
     void Start()
     {
         playerInput = GetComponent<PlayerInput>();
